@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Ticket_System" />
+        <module name="System_Ticketing" />
       </profile>
     </annotationProcessing>
   </component>

@@ -7,6 +7,18 @@
     <groupId>com.sergio.Ticketing_System</groupId>
     <artifactId>Ticket_System</artifactId>
     <version>1.0_Ver</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
