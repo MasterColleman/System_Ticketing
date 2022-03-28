@@ -9,14 +9,16 @@ public class Controller {
     }
 
     public static Controller getInstance() {
-        if (instance == null) {
-            instance = new Controller();
-        }
+        if (instance == null) instance = new Controller();
         return instance;
     }
 
     public List<?> getTickets() {
         // TODO: implement
         return null;
+    }
+
+    public void createTicket(Object ticket){
+        // TODO: implement
     }
 }

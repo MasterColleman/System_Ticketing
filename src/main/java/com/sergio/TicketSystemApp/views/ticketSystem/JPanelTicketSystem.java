@@ -148,7 +148,6 @@ public class JPanelTicketSystem extends JFrame {
         if (password.equals("admin")) {
             hideDialogTicketSystemPassword();
             setVisible(true);
-            System.out.println("SigIn");
         } else {
             JOptionPane.showMessageDialog(this, "Password incorrect", "Error", JOptionPane.ERROR_MESSAGE);
         }
