@@ -1,5 +1,7 @@
 package com.sergio.TicketSystemApp.views.home;
 
+import com.sergio.TicketSystemApp.views.ticketCreation.JPanelTicketCreate;
+import com.sergio.TicketSystemApp.views.ticketInfo.JPanelTicketInfo;
 import com.sergio.TicketSystemApp.views.ticketSystem.JPanelTicketSystem;
 
 import javax.swing.*;
@@ -16,6 +18,8 @@ public class JPanelHome extends JFrame {
     private static JPanelHome instance;
 
     private JPanelTicketSystem panelTicketSystem;
+    private JPanelTicketCreate panelTicketCreate;
+    private JPanelTicketInfo panelTicketInfo;
 
 
     public JPanelHome() {
@@ -73,10 +77,12 @@ public class JPanelHome extends JFrame {
     }
 
     public void setVisibleCreatePanel() {
-
+        panelTicketCreate = JPanelTicketCreate.getInstance();
+        panelTicketCreate.setVisible(true);
     }
 
     public void setVisibleSearchPanel() {
-
+        panelTicketInfo = JPanelTicketInfo.getInstance();
+        panelTicketInfo.setVisible(true);
     }
 }

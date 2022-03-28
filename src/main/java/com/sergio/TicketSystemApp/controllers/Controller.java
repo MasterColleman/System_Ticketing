@@ -21,4 +21,9 @@ public class Controller {
     public void createTicket(Object ticket){
         // TODO: implement
     }
+
+    public List<Object> getResponsesFromTicket(String i) {
+        // TODO: implement
+        return null;
+    }
 }
