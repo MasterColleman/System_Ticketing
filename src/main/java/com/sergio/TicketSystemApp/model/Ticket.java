@@ -43,7 +43,7 @@ public class Ticket {
     }
 
     public void setTicketNumber() {
-        String ticketNumber;
+        String ticketNumber = "#000";
         //this.ticketNumber = ticketNumber;
     }
 

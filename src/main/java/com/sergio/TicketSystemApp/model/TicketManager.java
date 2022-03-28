@@ -21,4 +21,6 @@ public class TicketManager {
     public void addTicket(Ticket ticket){
 
     }
+
+    //Metodos
 }

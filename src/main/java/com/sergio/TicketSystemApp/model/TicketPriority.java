@@ -37,7 +37,7 @@ public class TicketPriority {
                     if(timeForPriority<=32)
                         this.timeForPriority = timeForPriority;
                 case medium:
-                    if(timeForPriority<24)
+                    if(timeForPriority<=24)
                         this.timeForPriority = timeForPriority;
                 case high:
                     if(timeForPriority<=16)
@@ -48,7 +48,7 @@ public class TicketPriority {
             }
     }
 
-    public void setTimePriorityByState(StateType stateTypeIn, int deadlineTime){
+    public void setTimePriorityByState(StateType stateTypeIn, int deadlineTime){//TRY CATCH
         //Expange el tiempo de prioridad para el plazo de entrega cuando este ya se ha cumplido (0h restantes)
         this.count++;
         if(stateTypeIn != stateType.concluded && deadlineTime == 0 && count < 2){
