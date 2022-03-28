@@ -1,86 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.sergio.TicketSystemApp.views.ticketInfo.components.JCardTicket">
-  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="4" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="content" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="565" height="505"/>
+      <xy x="19" y="21" width="585" height="14647"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <component id="34188" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Tiquete Abierto"/>
-        </properties>
-      </component>
-      <grid id="df26a" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="df26a" binding="contentPanel" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
         <children>
-          <component id="4b1d9" class="javax.swing.JLabel">
+          <grid id="3b028" binding="headerPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="3" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="4b1d9" class="javax.swing.JLabel" binding="titleTicket">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Titulo ticket"/>
+                </properties>
+              </component>
+              <component id="c6396" class="javax.swing.JLabel" binding="titleMedia">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="User abrio ticketo por medio. "/>
+                </properties>
+              </component>
+              <component id="6253b" class="javax.swing.JLabel" binding="titleOpen">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Abierto a las xx:xx XX el XXX XX de XXX de 20XX"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="6f7f3" binding="textAreaPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="db589" class="javax.swing.JTextArea" binding="contentTextArea">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <lineWrap value="true"/>
+                  <text value="Hola! Quería pedirles ayuda a ustedes, ya que desde hace unos días he intentado cargar mi celular y no he podido conseguir que la barra de estado de energía de la batería llegue al 100%, aun dejándolo toda la noche conectado, compre hasta un cargador nuevo (oficial) y siguió igual. Además de que no carga por completo, se descarga cuando llega al 15% y la verdad uso mucho mi celular por contactos laborales y chat del trabajo. Mi celular es muy buen celular cuando lo compre me informe bien (me costó mucho y que tiene buenas especificaciones), aunque es cierto que llevo varios años con él, unos 4 al menos, y solo hasta hace poco ha empezado a fallar. Mi celular es un iPhone 8 Plus. Muchas gracias por leerme y espero una pronta respuesta de ustedes para poder enviarles o darles mi celular para que lo reparen. Atentamente,&#10;&#10;&#10;&#10; Elizabeth Fanzel. "/>
+                  <wrapStyleWord value="true"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <vspacer id="a90d4">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <grid id="7216e" binding="titlePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="34188" class="javax.swing.JLabel" binding="titleCard">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Titulo ticket"/>
-            </properties>
-          </component>
-          <component id="c6396" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="User abrio ticketo por medio. "/>
-            </properties>
-          </component>
-          <component id="6253b" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Abierto a las xx:xx XX el XXX XX de XXX de 20XX"/>
-            </properties>
-          </component>
-          <component id="db589" class="javax.swing.JTextArea" binding="holaQueríaPedirlesAyudaTextArea" default-binding="true">
-            <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="50"/>
-              </grid>
-            </constraints>
-            <properties>
-              <lineWrap value="true"/>
-              <text value="Hola! Quería pedirles ayuda a ustedes, ya que desde hace unos días he intentado cargar mi celular y no he podido conseguir que la barra de estado de energía de la batería llegue al 100%, aun dejándolo toda la noche conectado, compre hasta un cargador nuevo (oficial) y siguió igual. Además de que no carga por completo, se descarga cuando llega al 15% y la verdad uso mucho mi celular por contactos laborales y chat del trabajo. Mi celular es muy buen celular cuando lo compre me informe bien (me costó mucho y que tiene buenas especificaciones), aunque es cierto que llevo varios años con él, unos 4 al menos, y solo hasta hace poco ha empezado a fallar. Mi celular es un iPhone 8 Plus. Muchas gracias por leerme y espero una pronta respuesta de ustedes para poder enviarles o darles mi celular para que lo reparen. Atentamente,&#10;&#10;&#10;&#10; Elizabeth Fanzel. "/>
+              <text value="Tiquete Abierto"/>
             </properties>
           </component>
         </children>
       </grid>
-      <vspacer id="26b17">
-        <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
-      <vspacer id="d3564">
-        <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
-      <hspacer id="26367">
-        <constraints>
-          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
-      <hspacer id="5c9e7">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
     </children>
   </grid>
 </form>
