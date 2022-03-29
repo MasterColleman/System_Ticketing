@@ -25,6 +25,9 @@ public class TicketInfoListener implements ActionListener {
                 Controller.getInstance().createTicket(JPanelTicketCreate.getInstance().getTicket(),
                                                       JPanelTicketCreate.getInstance().getDescription());
             }
+            case "Edit" -> {
+                JPanelTicketCreate.getInstance().getInfoEdit();
+            }
         }
     }
 

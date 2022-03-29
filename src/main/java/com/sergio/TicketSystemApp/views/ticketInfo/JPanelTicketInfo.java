@@ -27,6 +27,7 @@ public class JPanelTicketInfo extends JFrame {
     private JLabel idTicket;
     private JLabel stateTicket;
     private JLabel titleTicket;
+    private JButton editarButton;
     private static JPanelTicketInfo instance;
 //    private JDialogSearchTicket searchTicket;
 
@@ -53,6 +54,7 @@ public class JPanelTicketInfo extends JFrame {
         cardPanel.setBackground(Color.WHITE);
         card.setBackground(Color.WHITE);
         scrollContentPanel.setBorder(null);
+        editarButton.addActionListener(TicketInfoListener.getInstance());
         setVisible(false);
 
     }

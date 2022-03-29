@@ -2,6 +2,7 @@ package com.sergio.TicketSystemApp.views.ticketCreation;
 
 import com.sergio.TicketSystemApp.controllers.Controller;
 import com.sergio.TicketSystemApp.model.*;
+import com.sergio.TicketSystemApp.views.ticketInfo.panelEditTicket.JPanelEditTicket;
 
 import javax.swing.*;
 import java.time.LocalDate;
@@ -22,6 +23,8 @@ public class JPanelTicketCreate extends JFrame {
     private JButton btnSend;
     private JPanel JPanelData;
     private JPanel JPanelDescription;
+
+    private com.sergio.TicketSystemApp.views.ticketInfo.panelEditTicket.JPanelEditTicket JPanelEditTicket;
 
     private static JPanelTicketCreate instance;
 
@@ -115,5 +118,9 @@ public class JPanelTicketCreate extends JFrame {
     public List<String> getDescription() {
         return List.of(txtTitle.getText(), txaDescription.getText(),
                        txtEmail.getText());
+    }
+
+    public void getInfoEdit() {
+
     }
 }
