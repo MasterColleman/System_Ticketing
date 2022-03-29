@@ -1,12 +1,11 @@
 package com.sergio.TicketSystemApp.views.ticketCreation;
 
 import com.sergio.TicketSystemApp.controllers.Controller;
-import com.sergio.TicketSystemApp.model.ContactMethod;
-import com.sergio.TicketSystemApp.model.StateType;
-import com.sergio.TicketSystemApp.model.Ticket;
-import com.sergio.TicketSystemApp.model.TicketServiceType;
+import com.sergio.TicketSystemApp.model.*;
 
 import javax.swing.*;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 public class JPanelTicketCreate extends JFrame {
@@ -30,7 +29,7 @@ public class JPanelTicketCreate extends JFrame {
         this.setContentPane(contentPane);
         setSize(800, 600);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         fillComboBox();
 
         txtPhone.setInputVerifier(new InputVerifier() {
@@ -41,6 +40,8 @@ public class JPanelTicketCreate extends JFrame {
             }
         });
 
+        btnSend.addActionListener(TicketCreateListener.getInstance());
+        btnSend.setActionCommand("send");
         setVisible(true);
 
     }
@@ -86,10 +87,33 @@ public class JPanelTicketCreate extends JFrame {
 
 
     public Ticket getTicket() {
-        return null;
+        return new Ticket("", (TicketServiceType) cmbType.getSelectedItem(), new TicketStatus(), txtTitle.getText(),
+                          txtName.getText(), txtEmail.getText(), txtPhone.getText(),
+                          (ContactMethod) cmbResponseType.getSelectedItem(), new TicketPriority(), null, null,
+                          (ContactMethod) cmbResponseType.getSelectedItem(), null, null, null, new TicketHistory());
     }
 
     public void showErrorMessage(String error, String message) {
         JOptionPane.showMessageDialog(this, error, message, JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void clearFields() {
+        txtName.setText("");
+        txtEmail.setText("");
+        txtPhone.setText("");
+        txtTitle.setText("");
+        cmbType.setSelectedIndex(0);
+        txaDescription.setText("");
+        cmbResponseType.setSelectedIndex(0);
+        termsCheckBox.setSelected(false);
+    }
+
+    public void close() {
+        this.dispose();
+    }
+
+    public List<String> getDescription() {
+        return List.of(txtTitle.getText(), txaDescription.getText(),
+                       txtEmail.getText());
     }
 }

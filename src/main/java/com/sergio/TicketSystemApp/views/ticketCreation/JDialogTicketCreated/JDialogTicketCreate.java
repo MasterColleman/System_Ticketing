@@ -18,7 +18,7 @@ public class JDialogTicketCreate extends JDialog {
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         setSize(400, 400);
         setLocationRelativeTo(null);
-        setVisible(true);
+        setVisible(false);
     }
 
     public static JDialogTicketCreate getInstance() {
@@ -29,8 +29,8 @@ public class JDialogTicketCreate extends JDialog {
     }
 
 
-    public void setLblIdTicket(JLabel lblIdTicket) {
-        this.lblIdTicket = lblIdTicket;
+    public void setText(String lblIdTicket) {
+        this.lblIdTicket.setText(lblIdTicket);
     }
 
     public static void main(String[] args) {

@@ -41,6 +41,7 @@ public class JPanelTicketInfo extends JFrame {
         setSize(900, 600);
         setBackground(Color.WHITE);
         content.setBackground(Color.WHITE);
+        content.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(4)));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         card.setSizetxtArea(new Dimension(getWidth() - 50, 100));

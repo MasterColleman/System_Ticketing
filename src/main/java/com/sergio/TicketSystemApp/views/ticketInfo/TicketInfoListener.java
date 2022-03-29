@@ -22,7 +22,8 @@ public class TicketInfoListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Send": {
-                Controller.getInstance().createTicket(JPanelTicketCreate.getInstance().getTicket());
+                Controller.getInstance().createTicket(JPanelTicketCreate.getInstance().getTicket(),
+                                                      JPanelTicketCreate.getInstance().getDescription());
             }
         }
     }

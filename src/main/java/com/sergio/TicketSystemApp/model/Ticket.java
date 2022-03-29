@@ -19,11 +19,12 @@ public class Ticket {
     private String timeByState;
     private TicketHistory ticketHistory;//Clase que contiene todas las cajas con los cambios del ticket incluida la descripcion
 
-    public Ticket(String ticketNumber, TicketServiceType ticketServiceType, TicketStatus ticketStatus, String ticketName,
-                  String clientName, String clientEmail, String clientCellPhoneNumber, ContactMethod sourceRequest,
-                  TicketPriority ticketPriority, AssignedTechnician assignedTechnician, TicketHashtags ticketHashtags,
-                  ContactMethod contactMethodToUpdateClient, LocalDate ticketCreationDate, TicketDeadline ticketDeadline,
-                  String timeByState, TicketHistory ticketHistory) {
+    public Ticket(String ticketNumber, TicketServiceType ticketServiceType, TicketStatus ticketStatus,
+                  String ticketName, String clientName, String clientEmail, String clientCellPhoneNumber,
+                  ContactMethod sourceRequest, TicketPriority ticketPriority, AssignedTechnician assignedTechnician,
+                  TicketHashtags ticketHashtags, ContactMethod contactMethodToUpdateClient,
+                  LocalDate ticketCreationDate, TicketDeadline ticketDeadline, String timeByState,
+                  TicketHistory ticketHistory) {
         this.ticketNumber = ticketNumber;
         this.ticketServiceType = ticketServiceType;
         this.ticketStatus = ticketStatus;
@@ -43,8 +44,12 @@ public class Ticket {
     }
 
     public void setTicketNumber(int count) {
-        this.ticketNumber = "#" + count + this.getTicketPriority().getPriority().getPriorityType()
-            .charAt(0) + this.getTicketServiceType().getTicketServiceType().charAt(0);
+        this.ticketNumber = "#" + count + switch (ticketServiceType) {
+            case technicalService -> "TES";
+            case assembly -> "ENS";
+            case micro_Consulting -> "MIC";
+            case technicalSupport -> "TSU";
+        };
     }
 
     public void setTicketServiceType(TicketServiceType ticketServiceType) {

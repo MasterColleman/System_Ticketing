@@ -53,12 +53,13 @@ public class TicketManager {
         return tickets;
     }
     //Agregar Ticket a Lista de Tickets
-    public void addTicket(Ticket ticket){
+    public Ticket addTicket(Ticket ticket){
         ticket.setTicketNumber(++count);
         ticket.setTicketCreationDate();
         ticket.setTimeByState();
         ticket.setTicketStatus();
         ticketsList.add(ticket);
+        return ticket;
     }
 
     //Buscar Ticket por Numero de Ticket

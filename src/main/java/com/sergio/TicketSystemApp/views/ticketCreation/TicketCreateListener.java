@@ -1,6 +1,8 @@
 package com.sergio.TicketSystemApp.views.ticketCreation;
 
 import com.sergio.TicketSystemApp.controllers.Controller;
+import com.sergio.TicketSystemApp.model.Ticket;
+import com.sergio.TicketSystemApp.views.ticketCreation.JDialogTicketCreated.JDialogTicketCreate;
 
 import javax.imageio.plugins.tiff.ExifGPSTagSet;
 import java.awt.event.ActionEvent;
@@ -14,7 +16,11 @@ public class TicketCreateListener implements ActionListener {
         if(e.getActionCommand().equals("send")) {
             JPanelTicketCreate view = JPanelTicketCreate.getInstance();
             if(view.validateFields()){
-                Controller.getInstance().createTicket(view.getTicket());
+                Ticket ticket = Controller.getInstance().createTicket(view.getTicket(),view.getDescription());
+                JDialogTicketCreate.getInstance().setText(ticket.getTicketNumber());
+                JDialogTicketCreate.getInstance().setVisible(true);
+                view.clearFields();
+                view.close();
             }else {
                 view.showErrorMessage("Error", "Please fill all the fields");
             }

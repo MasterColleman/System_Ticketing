@@ -40,8 +40,11 @@ public class Controller {
         return ticketManager.getTicketsList();
     }
 
-    public void createTicket(Ticket ticket) {
-        ticketManager.addTicket(ticket);
+    public Ticket createTicket(Ticket ticket, List<String> description) {
+        Ticket newTicket = ticketManager.addTicket(ticket);
+        ticketManager.addDescriptionInTicketHistory(newTicket, description.get(0), description.get(1),
+                                                    description.get(2));
+        return newTicket;
     }
 
     public List<Object> getResponsesFromTicket(String i) {
@@ -55,4 +58,7 @@ public class Controller {
     }
 
 
+    public Ticket getTicket(String id) {
+        return ticketManager.searchTicketByNumber(id);
+    }
 }

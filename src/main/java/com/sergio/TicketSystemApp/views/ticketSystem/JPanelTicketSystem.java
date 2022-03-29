@@ -34,10 +34,10 @@ public class JPanelTicketSystem extends JFrame {
     private JLabel lblTitle;
     private JLabel lblSubtitle;
     private JLabel lblDescription;
-    private JDialogTicketSystemPassword dialogTicketSystemPassword;
+    private final JDialogTicketSystemPassword dialogTicketSystemPassword;
     private static JPanelTicketSystem instance;
 
-    private String[] header;
+    private final String[] header;
     private List<Ticket> tickets;
     private String[][] data = new String[][]{};
 
@@ -124,6 +124,7 @@ public class JPanelTicketSystem extends JFrame {
         String password = dialogTicketSystemPassword.getPassword();
         if (password.equals("admin")) {
             hideDialogTicketSystemPassword();
+            initComponents();
             setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Password incorrect", "Error", JOptionPane.ERROR_MESSAGE);
@@ -132,8 +133,13 @@ public class JPanelTicketSystem extends JFrame {
 
     public Ticket getTicket() {
         int row = jTableTicketSystem.getSelectedRow();
+        String id = jTableTicketSystem.getValueAt(row, 0).toString();
         if (row != -1) {
-            return tickets.get(row);
+            for (Ticket ticket : tickets) {
+                if (ticket.getTicketNumber().equals(id)) {
+                    return ticket;
+                }
+            }
         }
         return null;
     }
