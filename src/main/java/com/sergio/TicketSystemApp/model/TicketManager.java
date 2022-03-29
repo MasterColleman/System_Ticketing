@@ -3,6 +3,7 @@ package com.sergio.TicketSystemApp.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TicketManager {
@@ -56,8 +57,8 @@ public class TicketManager {
     public Ticket addTicket(Ticket ticket){
         ticket.setTicketNumber(++count);
         ticket.setTicketCreationDate();
-        ticket.setTimeByState();
         ticket.setTicketStatus();
+        ticket.setTimeByState(Arrays.asList("0 h", "0 h", "0 h","0 h","0 h"));
         ticketsList.add(ticket);
         return ticket;
     }
@@ -86,7 +87,7 @@ public class TicketManager {
     }
 
     public ContactMethod chooseContactMethod(int election) {
-        ContactMethod contact = null;
+        ContactMethod contact;
         switch (election) {
             case 2 -> contact = contactMethod.whatsApp;
             case 3 -> contact = contactMethod.email;
@@ -151,13 +152,16 @@ public class TicketManager {
         ticket.setTicketDeadline(deadline);
     }
 
+    public void updateTimeByState(){
+
+    }
+
 
     //Metodos para actualizar CASO y DATO DEL CLIENTE del ticket
 
     public void updateTicketCase(Ticket ticket, TicketServiceType ticketServiceType, TicketPriority ticketPriority,
                                  AssignedTechnician assignedTechnician, TicketHashtags ticketHashtags,
                                  ContactMethod contactMethodToUpdateClient, TicketDeadline ticketDeadline) {
-        ticket.setTimeByState();
         ticket.setTicketServiceType(ticketServiceType);
         ticket.setTicketPriority(ticketPriority);
         ticket.setTicketHashtags(ticketHashtags);
