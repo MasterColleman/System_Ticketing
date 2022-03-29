@@ -3,13 +3,10 @@ package com.sergio.TicketSystemApp.views.ticketSystem;
 
 import com.sergio.TicketSystemApp.controllers.Controller;
 import com.sergio.TicketSystemApp.model.Ticket;
-import com.sergio.TicketSystemApp.views.home.HomeListener;
 import com.sergio.TicketSystemApp.views.ticketSystem.components.TicketSystemPassword.JDialogTicketSystemPassword;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 import java.util.List;
 
@@ -61,8 +58,8 @@ public class JPanelTicketSystem extends JFrame {
         for (int i = 0; i < tickets.size(); i++) {
             data[i][0] = "" + tickets.get(i).getTicketNumber();
             data[i][1] = toHtml(tickets.get(i).getTicketName() + "\n" + tickets.get(i).getClientName());
-            data[i][2] = "" + tickets.get(i).getTicketPriority().getPriority().getStateType();
-            data[i][3] = "" + tickets.get(i).getTimeByState();
+            data[i][2] = "" + tickets.get(i).getTicketPriority().getPriority().getPriorityType();
+            data[i][3] = "" + tickets.get(i).getTicketStatus().getActualState().getStateType();
             data[i][4] = "" + tickets.get(i).getTicketServiceType().getTicketServiceType();
 
         }
@@ -87,9 +84,7 @@ public class JPanelTicketSystem extends JFrame {
         jTableTicketSystem.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(200);
         jTableTicketSystem.getTableHeader().getColumnModel().getColumn(4).setMinWidth(150);
         jTableTicketSystem.getTableHeader().getColumnModel().getColumn(4).setMaxWidth(200);
-
         jTableTicketSystem.setAutoCreateRowSorter(true);
-
         jTableTicketSystem.setRowHeight(50);
 
         jTableTicketSystem.addMouseListener(TicketSystemListener.getInstance());
@@ -99,7 +94,6 @@ public class JPanelTicketSystem extends JFrame {
 
     private void getData() {
         tickets = Controller.getInstance().getTickets();
-        System.out.println(tickets);
     }
 
     private void setCounters() {
@@ -128,18 +122,12 @@ public class JPanelTicketSystem extends JFrame {
 
     public void sigIn() {
         String password = dialogTicketSystemPassword.getPassword();
-        // TODO: Check password
         if (password.equals("admin")) {
             hideDialogTicketSystemPassword();
             setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Password incorrect", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }
-
-    public static void main(String[] args) {
-        JPanelTicketSystem jPanelTicketSystem = new JPanelTicketSystem();
-        jPanelTicketSystem.setVisible(true);
     }
 
     public Ticket getTicket() {

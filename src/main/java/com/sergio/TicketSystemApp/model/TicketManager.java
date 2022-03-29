@@ -1,6 +1,7 @@
 package com.sergio.TicketSystemApp.model;
 
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,10 +51,10 @@ public class TicketManager {
         for (Ticket ticket : ticketsList)
             if (ticket.getTicketStatus().getActualState() == state) tickets.add(ticket);
         return tickets;
-
+    }
     //Agregar Ticket a Lista de Tickets
     public void addTicket(Ticket ticket){
-        ticket.setTicketNumber(count++);
+        ticket.setTicketNumber(++count);
         ticket.setTicketCreationDate();
         ticket.setTimeByState();
         ticket.setTicketStatus();
@@ -63,8 +64,8 @@ public class TicketManager {
     //Buscar Ticket por Numero de Ticket
     public Ticket searchTicketByNumber(String ticketNumber){
     Ticket ticketX = null;
-        for (int x = 0; x < ticketsList.size(); x++) {
-            ticketX = ticketsList.get(x);
+        for (Ticket ticket : ticketsList) {
+            ticketX = ticket;
             if (ticketX.getTicketNumber().equalsIgnoreCase(ticketNumber)) {
                 return ticketX;
             }
@@ -76,11 +77,11 @@ public class TicketManager {
     public AssignedTechnician chooseAgent(int election) {
     AssignedTechnician Agent;
         switch (election) {
-            case 2 -> Agent = assignedTechnician.AgentTwo;
-            case 3 -> Agent = assignedTechnician.AgentThree;
-            case 4 -> Agent = assignedTechnician.AgentFour;
-            case 5 -> Agent = assignedTechnician.AgentFive;
-            default -> Agent = assignedTechnician.AgentOne;
+            case 2 -> Agent = AssignedTechnician.AgentTwo;
+            case 3 -> Agent = AssignedTechnician.AgentThree;
+            case 4 -> Agent = AssignedTechnician.AgentFour;
+            case 5 -> Agent = AssignedTechnician.AgentFive;
+            default -> Agent = AssignedTechnician.AgentOne;
         }
         return Agent;
     }
@@ -119,10 +120,10 @@ public class TicketManager {
 
     //Metodo Añadir las palabras clave al campo Etiquetas del Ticket >>>>>NO ME DI MAñAS DE HACERLO XDD<<<<
 
-    /*public String addTicketHashtags(Ticket ticket, String hashtagsIn){
+    public String addTicketHashtags(Ticket ticket, String hashtagsIn){
         ticket.getTicketHashtags().addWordsToHashtags(hashtagsIn);
         return hashtagsIn;
-    }*/
+    }
 
 
     //Metodos para actualizar atributos del Ticket INDIVIDUALMENTE

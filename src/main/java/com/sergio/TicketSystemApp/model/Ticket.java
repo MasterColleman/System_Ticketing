@@ -43,11 +43,8 @@ public class Ticket {
     }
 
     public void setTicketNumber(int count) {
-        StringBuilder ticketNumber = new StringBuilder();
-        ticketNumber.append(count
-                        + this.getTicketPriority().getPriority().getStateType().substring(0,1)
-                        + this.getTicketServiceType().getTicketServiceType().substring(0,1));
-        this.ticketNumber = ticketNumber.toString();
+        this.ticketNumber = "#" + count + this.getTicketPriority().getPriority().getPriorityType()
+            .charAt(0) + this.getTicketServiceType().getTicketServiceType().charAt(0);
     }
 
     public void setTicketServiceType(TicketServiceType ticketServiceType) {
@@ -95,8 +92,7 @@ public class Ticket {
     }
 
     public void setTicketCreationDate() {
-        LocalDate ticketCreationDate = LocalDate.now();
-        this.ticketCreationDate = ticketCreationDate;
+        this.ticketCreationDate = LocalDate.now();
     }
 
     public void setTicketDeadline(TicketDeadline ticketDeadline) {
@@ -104,8 +100,7 @@ public class Ticket {
     }
 
     public void setTimeByState() {
-        String timeByState = "";
-        this.timeByState = timeByState;
+        this.timeByState = "";
     }
 
     public void setTicketHistory(TicketHistory ticketHistory) {

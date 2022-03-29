@@ -13,7 +13,7 @@ public enum PriorityType {
         this.priorityType = priorityType;
     }
 
-    public String getStateType() {
+    public String getPriorityType() {
         return priorityType;
     }
 
