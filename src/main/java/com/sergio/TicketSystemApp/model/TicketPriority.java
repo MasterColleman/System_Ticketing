@@ -50,8 +50,6 @@ public class TicketPriority {
         this.count++;
         if (stateTypeIn != stateType.concluded && deadlineTime == 0 && count < 2) {
             this.setTimePriorityAuto();
-        } else {
-            //"Ya no se puede aumentar el plazo de entrega maximo, porque ya se ha realizado una vez!"
         }
     }
 

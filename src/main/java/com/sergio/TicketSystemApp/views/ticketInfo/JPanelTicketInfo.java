@@ -1,6 +1,7 @@
 package com.sergio.TicketSystemApp.views.ticketInfo;
 
 import com.sergio.TicketSystemApp.controllers.Controller;
+
 import com.sergio.TicketSystemApp.model.ItemReplicaBox;
 import com.sergio.TicketSystemApp.model.StateType;
 import com.sergio.TicketSystemApp.model.Ticket;
@@ -8,6 +9,7 @@ import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardResponse;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardTicket;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.RectInfo;
 import com.sergio.TicketSystemApp.views.ticketInfo.dialogSearchTicket.JDialogSearchTicket;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +23,7 @@ import static com.sergio.TicketSystemApp.utils.StringUtils.toHtml;
 
 public class JPanelTicketInfo extends JFrame {
     private JPanel content;
+
     private JPanel statesPanel;
     private JPanel infoPanel;
     private JPanel cardPanel;
@@ -36,6 +39,7 @@ public class JPanelTicketInfo extends JFrame {
     private JCardTicket card;
     private List<JCardResponse> responses;
     private HashMap<String, RectInfo> states;
+
 
     public JPanelTicketInfo() {
         setContentPane(content);
@@ -55,12 +59,14 @@ public class JPanelTicketInfo extends JFrame {
         card.setBackground(Color.WHITE);
         scrollContentPanel.setBorder(null);
         setVisible(false);
+
     }
 
 
     public static JPanelTicketInfo getInstance() {
         if (instance == null) {
             instance = new JPanelTicketInfo();
+
         }
         return instance;
     }
@@ -134,6 +140,7 @@ public class JPanelTicketInfo extends JFrame {
 
         responsesPanel = new JPanel();
         responsesPanel.setLayout(new BoxLayout(responsesPanel,BoxLayout.Y_AXIS));
+
 
     }
 }

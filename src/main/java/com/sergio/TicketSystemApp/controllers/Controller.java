@@ -53,4 +53,9 @@ public class Controller {
         System.out.println(ticketManager.getTicketsByState(state));
         return ticketManager.getTicketsByState(state);
     }
+
+    public List<Object> getResponsesFromTicket(String i) {
+        // TODO: implement
+        return null;
+    }
 }

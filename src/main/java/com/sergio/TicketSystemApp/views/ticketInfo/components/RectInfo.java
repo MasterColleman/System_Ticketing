@@ -19,6 +19,7 @@ public class RectInfo extends JPanel {
         setLayout(new GridLayout(1, 1));
         label.setHorizontalAlignment(SwingConstants.CENTER);
         this.disableComponent();
+
         add(label);
     }
 
@@ -29,6 +30,7 @@ public class RectInfo extends JPanel {
         int[] xPoints = {0, getWidth() - 10, getWidth(),getWidth()-10,0, 10};
         int[] yPoints = {0, 0, getHeight()/2, getHeight(), getHeight(), getHeight()/2};
         g.fillPolygon(xPoints, yPoints, 6);
+
     }
 
     public void disableComponent() {

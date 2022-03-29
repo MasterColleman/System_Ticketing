@@ -41,6 +41,7 @@ public class JCardTicket extends JPanel {
 
     public void setContent(String content) {
         this.contentTextArea.setText(content);
+
     }
 
     public void setSizetxtArea(Dimension size) {

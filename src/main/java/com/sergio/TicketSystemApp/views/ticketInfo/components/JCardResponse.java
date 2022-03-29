@@ -46,4 +46,5 @@ public class JCardResponse extends JPanel {
         textArea1.setPreferredSize(size);
     }
 
+
 }

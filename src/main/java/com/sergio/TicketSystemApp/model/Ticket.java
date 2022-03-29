@@ -42,17 +42,20 @@ public class Ticket {
         this.ticketHistory = ticketHistory;
     }
 
-    public void setTicketNumber() {
-        String ticketNumber = "#000";
-        //this.ticketNumber = ticketNumber;
+    public void setTicketNumber(int count) {
+        StringBuilder ticketNumber = new StringBuilder();
+        ticketNumber.append(count
+                        + this.getTicketPriority().getPriority().getStateType().substring(0,1)
+                        + this.getTicketServiceType().getTicketServiceType().substring(0,1));
+        this.ticketNumber = ticketNumber.toString();
     }
 
     public void setTicketServiceType(TicketServiceType ticketServiceType) {
         this.ticketServiceType = ticketServiceType;
     }
 
-    public void setTicketStatus(TicketStatus ticketStatus) {
-        this.ticketStatus = ticketStatus;
+    public void setTicketStatus() {
+        this.ticketStatus.setFirstState();
     }
 
     public void setTicketName(String ticketName) {
@@ -91,7 +94,8 @@ public class Ticket {
         this.contactMethodToUpdateClient = contactMethodToUpdateClient;
     }
 
-    public void setTicketCreationDate(LocalDate ticketCreationDate) {
+    public void setTicketCreationDate() {
+        LocalDate ticketCreationDate = LocalDate.now();
         this.ticketCreationDate = ticketCreationDate;
     }
 
@@ -99,7 +103,8 @@ public class Ticket {
         this.ticketDeadline = ticketDeadline;
     }
 
-    public void setTimeByState(String timeByState) {
+    public void setTimeByState() {
+        String timeByState = "";
         this.timeByState = timeByState;
     }
 
