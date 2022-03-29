@@ -7,6 +7,8 @@ public class JDialogSearchTicket extends JDialog {
     private JPanel contentPanel;
     private JTextField txtNumber;
 
+    private static JDialogSearchTicket instance;
+
     public JDialogSearchTicket() {
         contentPanel.setBackground(Color.WHITE);
         txtNumber.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(2),Color.BLUE));
@@ -15,10 +17,14 @@ public class JDialogSearchTicket extends JDialog {
         setTitle("Search Ticket");
         setSize(400, 300);
         setLocationRelativeTo(null);
+        setVisible(true);
     }
 
-    public static void main(String[] args) {
-        JDialogSearchTicket dialog = new JDialogSearchTicket();
-        dialog.setVisible(true);
+
+    public static JDialogSearchTicket getInstance() {
+        if(instance == null) {
+            instance = new JDialogSearchTicket();
+        }
+        return instance;
     }
 }

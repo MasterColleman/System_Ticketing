@@ -18,5 +18,8 @@ public enum TicketServiceType {
         return ticketServiceType;
     }
 
-
+    @Override
+    public String toString() {
+        return getTicketServiceType();
+    }
 }

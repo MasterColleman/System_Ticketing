@@ -10,12 +10,15 @@ public class RectInfo extends JPanel {
     private Color colorEnabled;
 
     public RectInfo(String text, Color color) {
+        setBackground(Color.WHITE);
         colorDisabled = Color.LIGHT_GRAY;
         colorEnabled = color;
         label = new JLabel(text);
+        label.setForeground(new Color(0x47546A));
         this.color = color;
         setLayout(new GridLayout(1, 1));
         label.setHorizontalAlignment(SwingConstants.CENTER);
+        this.disableComponent();
         add(label);
     }
 
@@ -23,7 +26,9 @@ public class RectInfo extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(color);
-        g.fillRect(0, 0, getWidth(), getHeight());
+        int[] xPoints = {0, getWidth() - 10, getWidth(),getWidth()-10,0, 10};
+        int[] yPoints = {0, 0, getHeight()/2, getHeight(), getHeight(), getHeight()/2};
+        g.fillPolygon(xPoints, yPoints, 6);
     }
 
     public void disableComponent() {

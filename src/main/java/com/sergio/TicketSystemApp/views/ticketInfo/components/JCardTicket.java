@@ -28,14 +28,19 @@ public class JCardTicket extends JPanel {
         textAreaPanel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(1)));
         textAreaPanel.setBackground(new Color(255, 255, 255));
         contentPanel.setBackground(new Color(255, 255, 255));
+        contentTextArea.setEditable(false);
     }
 
 
-    public void setTitle(String title, String media, String mediaType, String user, LocalDateTime date) {
-        titleTicket.setText(title);
-        titleMedia.setText(String.format("%s abrió el ticket por %s. %s a %s", user, mediaType, user, media));
-        titleOpen.setText(String.format("Abierto a las %d:%d el %s de %s de %s", date.getHour(), date.getMinute(),
-                                        date.getDayOfMonth(), date.getMonth(), date.getYear()));
+    public void setTitle(String title, String titleBox, String subTitle, String time) {
+        titleCard.setText(title);
+        titleTicket.setText(titleBox);
+        titleMedia.setText(subTitle);
+        titleOpen.setText(time);
+    }
+
+    public void setContent(String content) {
+        this.contentTextArea.setText(content);
     }
 
     public void setSizetxtArea(Dimension size) {
