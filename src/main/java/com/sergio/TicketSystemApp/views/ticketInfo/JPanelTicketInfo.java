@@ -6,6 +6,7 @@ import com.sergio.TicketSystemApp.model.Ticket;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardResponse;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardTicket;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.RectInfo;
+import com.sergio.TicketSystemApp.views.ticketInfo.dialogSearchTicket.JDialogSearchTicket;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,11 +30,12 @@ public class JPanelTicketInfo extends JFrame {
     private JLabel titleTicket;
     private JButton editarButton;
     private static JPanelTicketInfo instance;
-//    private JDialogSearchTicket searchTicket;
+    private JDialogSearchTicket searchTicket;
 
     private JCardTicket card;
     private List<JCardResponse> responses;
     private HashMap<String, RectInfo> states;
+    private Ticket ticket;
 
 
     public JPanelTicketInfo() {
@@ -45,7 +47,7 @@ public class JPanelTicketInfo extends JFrame {
         content.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(4)));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        card.setSizetxtArea(new Dimension(getWidth() - 50, 100));
+        card.setSizetxtArea(new Dimension(getWidth() - 200, 100));
         infoPanel.setBackground(Color.WHITE);
         statesPanel.setBackground(Color.WHITE);
         responsesPanel.setBackground(Color.WHITE);
@@ -55,8 +57,13 @@ public class JPanelTicketInfo extends JFrame {
         card.setBackground(Color.WHITE);
         scrollContentPanel.setBorder(null);
         editarButton.addActionListener(TicketInfoListener.getInstance());
+        editarButton.setActionCommand("Edit");
         setVisible(false);
-
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -85,6 +92,7 @@ public class JPanelTicketInfo extends JFrame {
     }
 
     public void setUpCard(Ticket ticket) {
+        this.ticket = ticket;
         titleTicket.setText("Titulo del Ticket: " + ticket.getTicketName());
         idTicket.setText("Ticket: " + ticket.getTicketNumber());
         stateTicket.setText("Estado del Ticket:" + ticket.getTicketStatus().getActualState().getStateType());
@@ -107,7 +115,7 @@ public class JPanelTicketInfo extends JFrame {
         JCardResponse response;
         for (ItemReplicaBox item : items) {
             response = new JCardResponse();
-            response.setSizetxtArea(new Dimension(getWidth() - 50, 100));
+            response.setSizetxtArea(new Dimension(getWidth() - 200, 100));
             response.setTitleResponse(item.getBoxTitle(),
                 item.getBoxTitleDescription(), item.getBoxSubtitle(), item.getBoxNewsDateAndTime());
             response.setContentResponse(item.getBoxContent());
@@ -139,5 +147,17 @@ public class JPanelTicketInfo extends JFrame {
         responsesPanel.setLayout(new BoxLayout(responsesPanel,BoxLayout.Y_AXIS));
 
 
+    }
+
+    public Ticket getTicket() {
+        return ticket;
+    }
+
+    public void disableEdit() {
+        editarButton.setEnabled(false);
+    }
+
+    public void enableButton() {
+        editarButton.setEnabled(true);
     }
 }

@@ -27,6 +27,11 @@ public class JDialogTicketSystemPassword extends JDialog {
         setResizable(false);
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         setVisible(false);
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     public static JDialogTicketSystemPassword getInstance() {

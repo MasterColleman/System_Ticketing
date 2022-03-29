@@ -30,6 +30,11 @@ public class JPanelTicketCreate extends JFrame {
 
     public JPanelTicketCreate() {
         this.setContentPane(contentPane);
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
         setSize(800, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -46,6 +51,7 @@ public class JPanelTicketCreate extends JFrame {
         btnSend.addActionListener(TicketCreateListener.getInstance());
         btnSend.setActionCommand("send");
         setVisible(true);
+
 
     }
 
@@ -64,8 +70,6 @@ public class JPanelTicketCreate extends JFrame {
     }
 
     public boolean validateFields() {
-        //regex for email -> ^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$
-        //regex for phone -> ^3[0-9]{9}$
         return !txtName.getText().isEmpty() && txtEmail.getText()
             .matches("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$") && !txtEmail.getText()
             .isEmpty() && txtPhone.getText().matches("^3[0-9]{9}$") && !txtPhone.getText()

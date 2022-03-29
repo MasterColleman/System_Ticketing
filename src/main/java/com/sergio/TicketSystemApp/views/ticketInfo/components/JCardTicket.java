@@ -29,6 +29,11 @@ public class JCardTicket extends JPanel {
         textAreaPanel.setBackground(new Color(255, 255, 255));
         contentPanel.setBackground(new Color(255, 255, 255));
         contentTextArea.setEditable(false);
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
 

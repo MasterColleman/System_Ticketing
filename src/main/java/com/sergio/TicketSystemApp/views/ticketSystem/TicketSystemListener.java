@@ -29,6 +29,7 @@ public class TicketSystemListener extends MouseAdapter {
     private void openInfoTicket(Ticket ticket) {
         JPanelTicketInfo info = JPanelTicketInfo.getInstance();
         info.setUpCard(ticket);
+        info.enableButton();
         info.setVisible(true);
     }
 }

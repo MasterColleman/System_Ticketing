@@ -28,6 +28,11 @@ public class JCardResponse extends JPanel {
         contentPanel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(1)));
         contentPanel.setBackground(new Color(255, 255, 255));
         setVisible(true);
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setTitleResponse(String titleBig, String title, String subtitle, String time){

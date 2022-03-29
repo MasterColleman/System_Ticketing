@@ -46,10 +46,16 @@ public class JPanelTicketSystem extends JFrame {
         header = new String[]{"Ticket", "Asunto del Ticket", "Prioridad", "Estado", "Tipo y Etiquetas"};
         dialogTicketSystemPassword = JDialogTicketSystemPassword.getInstance();
         setSize(800, 600);
+
         initComponents();
         setContentPane(panelTicketSystem);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
         setTitle("Ticket System");
     }
 
@@ -64,9 +70,12 @@ public class JPanelTicketSystem extends JFrame {
 
         }
         jTableTicketSystem.setModel(new DefaultTableModel(data, header));
+
     }
 
     private void initComponents() {
+
+
         getData();
         setCounters();
         setTickets();

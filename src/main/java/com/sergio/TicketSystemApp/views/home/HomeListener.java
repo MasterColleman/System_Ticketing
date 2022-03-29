@@ -21,7 +21,7 @@ public class HomeListener extends MouseAdapter {
         switch (e.getComponent().getName()) {
             case "btnSystem" -> JPanelHome.getInstance().setVisibleSystemPanel();
             case "btnCreate" -> JPanelHome.getInstance().setVisibleCreatePanel();
-            case "btnSearch" -> JPanelHome.getInstance().setVisibleSearchPanel();
+            case "btnView" -> JPanelHome.getInstance().setVisibleSearchPanel();
         }
 
     }

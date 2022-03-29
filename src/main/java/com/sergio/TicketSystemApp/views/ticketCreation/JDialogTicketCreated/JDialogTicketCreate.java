@@ -19,6 +19,11 @@ public class JDialogTicketCreate extends JDialog {
         setSize(400, 400);
         setLocationRelativeTo(null);
         setVisible(false);
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     public static JDialogTicketCreate getInstance() {

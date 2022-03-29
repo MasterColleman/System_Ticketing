@@ -19,7 +19,11 @@ public class RectInfo extends JPanel {
         setLayout(new GridLayout(1, 1));
         label.setHorizontalAlignment(SwingConstants.CENTER);
         this.disableComponent();
-
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
         add(label);
     }
 

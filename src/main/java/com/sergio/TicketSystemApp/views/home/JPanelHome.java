@@ -2,6 +2,7 @@ package com.sergio.TicketSystemApp.views.home;
 
 import com.sergio.TicketSystemApp.views.ticketCreation.JPanelTicketCreate;
 import com.sergio.TicketSystemApp.views.ticketInfo.JPanelTicketInfo;
+import com.sergio.TicketSystemApp.views.ticketInfo.dialogSearchTicket.JDialogSearchTicket;
 import com.sergio.TicketSystemApp.views.ticketSystem.JPanelTicketSystem;
 
 import javax.swing.*;
@@ -19,7 +20,7 @@ public class JPanelHome extends JFrame {
 
     private JPanelTicketSystem panelTicketSystem;
     private JPanelTicketCreate panelTicketCreate;
-    private JPanelTicketInfo panelTicketInfo;
+    private JDialogSearchTicket panelTicketInfo;
 
 
     public JPanelHome() {
@@ -82,7 +83,7 @@ public class JPanelHome extends JFrame {
     }
 
     public void setVisibleSearchPanel() {
-        panelTicketInfo = JPanelTicketInfo.getInstance();
+        panelTicketInfo = JDialogSearchTicket.getInstance();
         panelTicketInfo.setVisible(true);
     }
 }

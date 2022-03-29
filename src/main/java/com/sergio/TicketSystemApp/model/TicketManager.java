@@ -64,14 +64,12 @@ public class TicketManager {
 
     //Buscar Ticket por Numero de Ticket
     public Ticket searchTicketByNumber(String ticketNumber){
-    Ticket ticketX = null;
         for (Ticket ticket : ticketsList) {
-            ticketX = ticket;
-            if (ticketX.getTicketNumber().equalsIgnoreCase(ticketNumber)) {
-                return ticketX;
+            if (ticket.getTicketNumber().equalsIgnoreCase(ticketNumber)) {
+                return ticket;
             }
         }
-        return ticketX;
+        return null;
     }
 
     //METODOS PARA DESPLEGABLES
