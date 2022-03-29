@@ -20,4 +20,8 @@ public enum StateType {
         return stateType;
     }
 
+    @Override
+    public String toString() {
+        return getStateType();
+    }
 }

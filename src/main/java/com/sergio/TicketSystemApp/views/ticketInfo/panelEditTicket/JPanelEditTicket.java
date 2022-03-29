@@ -1,9 +1,6 @@
 package com.sergio.TicketSystemApp.views.ticketInfo.panelEditTicket;
 
-import com.sergio.TicketSystemApp.model.ItemReplicaBox;
-import com.sergio.TicketSystemApp.model.PriorityType;
-import com.sergio.TicketSystemApp.model.StateType;
-import com.sergio.TicketSystemApp.model.Ticket;
+import com.sergio.TicketSystemApp.model.*;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardResponse;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardTicket;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.RectInfo;
@@ -26,10 +23,10 @@ public class JPanelEditTicket extends JDialog {
     private JScrollPane scroll;
     private JPanel content;
     private JComboBox<PriorityType> cmbPrioriry;
-    private JComboBox cmbType;
-    private JComboBox cmbAsigned;
-    private JComboBox cmbState;
-    private JComboBox cmbContact;
+    private JComboBox<TicketServiceType> cmbType;
+    private JComboBox<AssignedTechnician> cmbAsigned;
+    private JComboBox<StateType> cmbState;
+    private JComboBox<ContactMethod> cmbContact;
     private JTextArea txaEliminated;
     private JTextArea txaFinished;
     private JTextArea txaCita;
@@ -162,6 +159,35 @@ public class JPanelEditTicket extends JDialog {
             e.printStackTrace();
         }
 
+        cmbPrioriry.addItem(PriorityType.urgent);
+        cmbPrioriry.addItem(PriorityType.high);
+        cmbPrioriry.addItem(PriorityType.medium);
+        cmbPrioriry.addItem(PriorityType.low);
+
+        cmbType.addItem(TicketServiceType.technicalService);
+        cmbType.addItem(TicketServiceType.technicalSupport);
+        cmbType.addItem(TicketServiceType.micro_Consulting);
+        cmbType.addItem(TicketServiceType.assembly);
+
+        cmbAsigned.addItem(AssignedTechnician.AgentOne);
+        cmbAsigned.addItem(AssignedTechnician.AgentTwo);
+        cmbAsigned.addItem(AssignedTechnician.AgentThree);
+        cmbAsigned.addItem(AssignedTechnician.AgentFour);
+        cmbAsigned.addItem(AssignedTechnician.AgentFive);
+
+        cmbState.addItem(StateType.openByUser);
+        cmbState.addItem(StateType.awaitingAssignmentAndResponse);
+        cmbState.addItem(StateType.atReceptionDiagnosis);
+        cmbState.addItem(StateType.inProcessing);
+        cmbState.addItem(StateType.inTestingReview);
+        cmbState.addItem(StateType.concluded);
+
+        cmbContact.addItem(ContactMethod.ticketSystem);
+        cmbContact.addItem(ContactMethod.whatsApp);
+        cmbContact.addItem(ContactMethod.email);
+        cmbContact.addItem(ContactMethod.phoneCall);
+        cmbContact.addItem(ContactMethod.inPerson);
+        cmbContact.addItem(ContactMethod.homeDelivery);
 
         lblTotalTime.setText("Tiempo Total: " );
     }
@@ -190,6 +216,8 @@ public class JPanelEditTicket extends JDialog {
 
         panelResponses = new JPanel();
         panelResponses.setLayout(new BoxLayout(panelResponses, BoxLayout.Y_AXIS));
+
+
     }
 
     public void enableState(StateType stateType) {
