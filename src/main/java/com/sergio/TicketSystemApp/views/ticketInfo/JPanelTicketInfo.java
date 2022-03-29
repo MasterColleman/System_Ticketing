@@ -1,8 +1,6 @@
 package com.sergio.TicketSystemApp.views.ticketInfo;
 
-import com.sergio.TicketSystemApp.model.ItemReplicaBox;
-import com.sergio.TicketSystemApp.model.StateType;
-import com.sergio.TicketSystemApp.model.Ticket;
+import com.sergio.TicketSystemApp.model.*;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardResponse;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardTicket;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.RectInfo;
@@ -37,6 +35,13 @@ public class JPanelTicketInfo extends JFrame {
     private HashMap<String, RectInfo> states;
     private Ticket ticket;
 
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SERGIO
+    private JComboBox<PriorityType> cmbPriorityType;
+    private JComboBox<TicketServiceType> cmbServiceType;
+    private JComboBox<AssignedTechnician> cmbAgentType;
+    private JComboBox<StateType> cmbStateType;
+    private JComboBox<ContactMethod> cmbContactMethod;
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SERGIO
 
     public JPanelTicketInfo() {
         setContentPane(content);
@@ -66,6 +71,39 @@ public class JPanelTicketInfo extends JFrame {
         }
     }
 
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SERGIO
+    private void fillComboBox() {
+        cmbPriorityType.addItem(PriorityType.urgent);
+        cmbPriorityType.addItem(PriorityType.high);
+        cmbPriorityType.addItem(PriorityType.medium);
+        cmbPriorityType.addItem(PriorityType.low);
+
+        cmbServiceType.addItem(TicketServiceType.technicalService);
+        cmbServiceType.addItem(TicketServiceType.technicalSupport);
+        cmbServiceType.addItem(TicketServiceType.micro_Consulting);
+        cmbServiceType.addItem(TicketServiceType.assembly);
+
+        cmbAgentType.addItem(AssignedTechnician.AgentOne);
+        cmbAgentType.addItem(AssignedTechnician.AgentTwo);
+        cmbAgentType.addItem(AssignedTechnician.AgentThree);
+        cmbAgentType.addItem(AssignedTechnician.AgentFour);
+        cmbAgentType.addItem(AssignedTechnician.AgentFive);
+
+        cmbStateType.addItem(StateType.openByUser);
+        cmbStateType.addItem(StateType.awaitingAssignmentAndResponse);
+        cmbStateType.addItem(StateType.atReceptionDiagnosis);
+        cmbStateType.addItem(StateType.inProcessing);
+        cmbStateType.addItem(StateType.inTestingReview);
+        cmbStateType.addItem(StateType.concluded);
+
+        cmbContactMethod.addItem(ContactMethod.ticketSystem);
+        cmbContactMethod.addItem(ContactMethod.whatsApp);
+        cmbContactMethod.addItem(ContactMethod.email);
+        cmbContactMethod.addItem(ContactMethod.phoneCall);
+        cmbContactMethod.addItem(ContactMethod.inPerson);
+        cmbContactMethod.addItem(ContactMethod.homeDelivery);
+    }
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SERGIO
 
     public static JPanelTicketInfo getInstance() {
         if (instance == null) {
