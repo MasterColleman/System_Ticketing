@@ -79,6 +79,14 @@ public class JPanelEditTicket extends JDialog {
     private JPanel panelUTiempos;
     private JPanel panelUPlazo;
     private JPanel panelUFecha;
+    private JTextField textField2;
+    private JComboBox comboBox1;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JTextField textField5;
+    private JTextField textField6;
+    private JTextField textField7;
+    private JTextField textField8;
 
     private static JPanelEditTicket instance;
     private Map<String, RectInfo> states;
@@ -155,6 +163,7 @@ public class JPanelEditTicket extends JDialog {
         }
 
 
+        lblTotalTime.setText("Tiempo Total: " );
     }
 
     private void createUIComponents() {
@@ -207,6 +216,7 @@ public class JPanelEditTicket extends JDialog {
         setResponses(ticket);
         enableState(ticket.getTicketStatus().getActualState());
         setTexts(ticket);
+        lblTotalTime.setText("Tiempo Total: " + ticket.getTotalTime());
     }
 
     private void setTexts(Ticket ticket) {

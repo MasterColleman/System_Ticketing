@@ -22,6 +22,7 @@ public class Ticket {
     private TicketDeadline ticketDeadline;//Clase Plazo de Entrega
     private List<String> timeByState;
     private TicketHistory ticketHistory;//Clase que contiene todas las cajas con los cambios del ticket incluida la descripcion
+    private int totalTime;
 
     public Ticket(String ticketNumber, TicketServiceType ticketServiceType, TicketStatus ticketStatus,
                   String ticketName, String clientName, String clientEmail, String clientCellPhoneNumber,
@@ -56,17 +57,21 @@ public class Ticket {
     //>>>>>>>>>>>>>>>>>>>>>>EJECUTAR CADA VEZ QUE SE CAMBIE DE ESTADO EN EL TICKET<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public void setTimeByState(TicketStatus ticketStatus, TicketDeadline ticketDeadline,
     LocalDateTime ticketCreationDate, TicketPriority ticketPriority, StateType stateTypeIn){
-        List<String> timeByStateList = new ArrayList<>(); int totalTime = 0;
+        timeByState = new ArrayList<>();
         int timeStop = (ticketPriority.getTimeForPriority()
                     - ticketDeadline.getDeadlineTimeAtAnyTime(ticketCreationDate, ticketPriority, stateTypeIn));
         switch (ticketStatus.getActualState()) {
-            case openByUser-> timeByStateList.set(0,timeStop + " h");
-            case inProcessing-> timeByStateList.set(1,timeStop + " h");
-            case awaitingAssignmentAndResponse-> timeByStateList.set(2,timeStop + " h");
-            case atReceptionDiagnosis-> timeByStateList.set(3,timeStop + " h");
-            case inTestingReview-> timeByStateList.set(4,timeStop + " h");
+            case openByUser-> timeByState.set(0,timeStop + " h");
+            case inProcessing-> timeByState.set(1,timeStop + " h");
+            case awaitingAssignmentAndResponse-> timeByState.set(2,timeStop + " h");
+            case atReceptionDiagnosis-> timeByState.set(3,timeStop + " h");
+            case inTestingReview-> timeByState.set(4,timeStop + " h");
         }
-        totalTime += timeStop;//NO HACE NADA XD
+        totalTime += timeStop;
+    }
+
+    public int getTotalTime(){
+        return totalTime;
     }
 
     public void setTicketNumber(int count) {

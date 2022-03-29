@@ -23,8 +23,7 @@ public class TicketHistory {
         ItemReplicaBox description = new ItemReplicaBox();
         description.setBoxTitle("Tiquete Abierto - Descripcion del Caso");
         description.setBoxSubtitle(boxSubtitle);//Aqui va el titulo del ticket
-        description.setBoxTitleDescription(clientName + " abrió ticket por " + String.valueOf(sourceRequest) + ". " +
-                                            clientName + " a " + detailSourceRequest + ".");
+        description.setBoxTitleDescription(clientName + " abrió ticket por " + String.valueOf(sourceRequest) + ". ");
         description.setBoxNewsDateAndTime();
         description.setBoxContent(boxContent);
         listItemReplicaBoxes.add(description);
