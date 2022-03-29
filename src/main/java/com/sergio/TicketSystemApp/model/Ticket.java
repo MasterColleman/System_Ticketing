@@ -2,6 +2,7 @@ package com.sergio.TicketSystemApp.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,12 +70,14 @@ public class Ticket {
     }
 
     public void setTicketNumber(int count) {
-        this.ticketNumber = "#00" + count + switch (ticketServiceType) {
-            case technicalService -> "TES";
-            case assembly -> "ENS";
-            case micro_Consulting -> "MIC";
-            case technicalSupport -> "TSU";
-        };
+        LocalDate today = LocalDate.now();
+        String formattedToday = today.format(DateTimeFormatter.ofPattern("ddMMyy"));
+        this.ticketNumber = "#" + formattedToday + switch (ticketServiceType)  {
+            case technicalService -> "SERTEC";
+            case assembly -> "ENSMBJ";
+            case micro_Consulting -> "MICRCS";
+            case technicalSupport -> "SPRTEC";
+        } + count;
     }
 
     public void setTicketServiceType(TicketServiceType ticketServiceType) {
