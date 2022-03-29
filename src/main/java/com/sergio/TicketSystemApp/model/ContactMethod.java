@@ -7,7 +7,8 @@ public enum ContactMethod {
     email("Correo Electronico"),
     phoneCall("Llamada Telefonica"),
     homeDelivery("A Domicilio"),
-    inPerson("Presencial")
+    inPerson("Presencial"),
+    anySocialRed("Otra red social")
     ;
     private final String contactMethod;
 

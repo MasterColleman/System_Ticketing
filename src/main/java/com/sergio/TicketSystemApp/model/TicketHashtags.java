@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 public class TicketHashtags {
 
+    public ArrayList<String> getHashtagsListToTicket() {
+        return hashtagsListToTicket;
+    }
+
     private String Hashtags;//palabras clave del campo Etiquetas
     private TicketServiceType serviceType;
     private ArrayList<String> hashtagsListToTicket;//lista final desplegable de palabras clave que aparece en Ticket
@@ -43,16 +47,9 @@ public class TicketHashtags {
     //Metodo para agregar palabra clave una lista especifica de palabras clave de acuerdo a tipo de servicio
     public void addKeywordToSpecificServiceList(@NotNull TicketServiceType serviceType, String Keyword){
         switch (serviceType){
-            case technicalService:
-            case technicalSupport:
-                this.technicalSupportAndServiceList.add(Keyword);
-            case assembly:
-                this.assemblyList.add(Keyword);
-            case micro_Consulting:
-                this.micro_ConsultingList.add(Keyword);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + serviceType);
+            case technicalService,technicalSupport -> this.technicalSupportAndServiceList.add(Keyword);
+            case assembly -> this.assemblyList.add(Keyword);
+            case micro_Consulting -> this.micro_ConsultingList.add(Keyword);
         }
     }
 
@@ -60,16 +57,9 @@ public class TicketHashtags {
     public void enableHashtagList(@NotNull TicketServiceType serviceType){
         ArrayList<String>hashtagsList = this.hashtagsListToTicket;
         switch (serviceType){
-            case technicalService:
-            case technicalSupport:
-                hashtagsList = this.technicalSupportAndServiceList;
-            case assembly:
-                hashtagsList = this.assemblyList;
-            case micro_Consulting:
-                hashtagsList = this.micro_ConsultingList;
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + serviceType);
+            case technicalService, technicalSupport -> hashtagsList = this.technicalSupportAndServiceList;
+            case assembly -> hashtagsList = this.assemblyList;
+            case micro_Consulting -> hashtagsList = this.micro_ConsultingList;
         }
     }
 
@@ -86,8 +76,8 @@ public class TicketHashtags {
     public void addWordsToHashtags(@NotNull String hashtagsIn){
         if(hashtagsIn.length()>=20&&hashtagsIn.length()<=90)
             setHashtags(hashtagsIn);
-    }
 
+    }
     public void addWordsToHashtags(String key1,String key2,String key3,String key4, String key5,
                                    String key6, String key7, String key8, String key9){
         String hashtagsIn = key1 + " " + key2 + " " + key3 + " " + key4 + " " + key5 + " " + key6
@@ -95,7 +85,6 @@ public class TicketHashtags {
         if(hashtagsIn.length()>=20&&hashtagsIn.length()<=90)
             setHashtags(hashtagsIn);
     }
-
     public void addWordsToHashtags(String key1,String key2,String key3,String key4, String key5){
         String hashtagsIn = key1 + " " + key2 + " " + key3 + " " + key4 + " " + key5;
         if(hashtagsIn.length()>=20&&hashtagsIn.length()<=70)
