@@ -46,6 +46,8 @@ public class JPanelEditTicket extends JDialog {
     private JLabel timeFive;
     private JLabel timeSix;
     private JLabel lblTotalTime;
+    private JTextField textField1;
+    private JButton actualizarButton;
 
     private static JPanelEditTicket instance;
 
