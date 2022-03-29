@@ -10,14 +10,10 @@ public class TicketPriority {
     public void setTimePriorityAuto(){//setea el tiempo de prioridad del plazo de entrega (en horas) de acuerdo a la prioridad
         PriorityType priority = this.priority;
         switch (priority) {
-            case low:
-                this.timeForPriority = 32;
-            case medium:
-                this.timeForPriority = 24;
-            case high:
-                this.timeForPriority = 16;
-            case urgent:
-                this.timeForPriority = 6;
+            case low -> this.timeForPriority = 32;
+            case medium -> this.timeForPriority = 24;
+            case high -> this.timeForPriority = 16;
+            case urgent -> this.timeForPriority = 6;
         }
     }
 
@@ -53,8 +49,6 @@ public class TicketPriority {
         this.count++;
         if(stateTypeIn != stateType.concluded && deadlineTime == 0 && count < 2){
             this.setTimePriorityAuto();
-        }else{
-            //"Ya no se puede aumentar el plazo de entrega maximo, porque ya se ha realizado una vez!"
         }
     }
 
