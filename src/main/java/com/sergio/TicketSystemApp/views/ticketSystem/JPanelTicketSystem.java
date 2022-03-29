@@ -2,6 +2,7 @@ package com.sergio.TicketSystemApp.views.ticketSystem;
 
 
 import com.sergio.TicketSystemApp.controllers.Controller;
+import com.sergio.TicketSystemApp.model.Ticket;
 import com.sergio.TicketSystemApp.views.home.HomeListener;
 import com.sergio.TicketSystemApp.views.ticketSystem.components.TicketSystemPassword.JDialogTicketSystemPassword;
 
@@ -40,40 +41,8 @@ public class JPanelTicketSystem extends JFrame {
     private static JPanelTicketSystem instance;
 
     private String[] header;
-    private List<?> tickets;
-    private String[][] data = new String[][]{
-        {"1",toHtml("asunto1\nAsunto2\nasunto3"),"urgente","final","tipo"},
-        {"2","asunto 2","urgente","final","0123456789012345678901234567890"},
-        {"3","asunto 3","urgente","final","0123456789012345678901234567890"},
-        {"4","asunto 4","urgente","final","0123456789012345678901234567890"},
-        {"5","asunto 5","urgente","final","0123456789012345678901234567890"},
-        {"6","asunto 6","urgente","final","0123456789012345678901234567890"},
-        {"7","asunto 7","urgente","final","tipo"},
-        {"8","asunto 8","urgente","final","tipo"},
-        {"9","asunto 9","urgente","final","tipo"},
-        {"10","asunto 10","urgente","final","tipo"},
-        {"11","asunto 11","urgente","final","tipo"},
-        {"12","asunto 12","urgente","final","tipo"},
-        {"13","asunto 13","urgente","final","tipo"},
-        {"14","asunto 14","urgente","final","tipo"},
-        {"15","asunto 15","urgente","final","tipo"},
-        {"16","asunto 16","urgente","final","tipo"},
-        {"17","asunto 17","urgente","final","tipo"},
-        {"18","asunto 18","urgente","final","tipo"},
-        {"19","asunto 19","urgente","final","tipo"},
-        {"20","asunto 20","urgente","final","tipo"},
-        {"21","asunto 21","urgente","final","tipo"},
-        {"22","asunto 22","urgente","final","tipo"},
-        {"23","asunto 23","urgente","final","tipo"},
-        {"24","asunto 24","urgente","final","tipo"},
-        {"25","asunto 25","urgente","final","tipo"},
-        {"26","asunto 26","urgente","final","tipo"},
-        {"27","asunto 27","urgente","final","tipo"},
-        {"28","asunto 28","urgente","final","tipo"},
-        {"29","asunto 29","urgente","final","tipo"},
-        {"30","asunto 30","urgente","final","tipo"},
-        {"31","asunto 31","urgente","final","tipo"},
-    };
+    private List<Ticket> tickets;
+    private String[][] data = new String[][]{};
 
     public JPanelTicketSystem() {
         instance = this;
@@ -88,20 +57,28 @@ public class JPanelTicketSystem extends JFrame {
     }
 
     public void setTickets() {
-        // TODO: Implement complete functionality
         data = new String[tickets.size()][5];
         for (int i = 0; i < tickets.size(); i++) {
-            data[i][0] = "#" + tickets.get(i);
-            data[i][1] = "";
-            data[i][2] = "";
-            data[i][3] = "";
-            data[i][4] = "";
+            data[i][0] = "" + tickets.get(i).getTicketNumber();
+            data[i][1] = toHtml(tickets.get(i).getTicketName() + "\n" + tickets.get(i).getClientName());
+            data[i][2] = "" + tickets.get(i).getTicketPriority().getPriority().getStateType();
+            data[i][3] = "" + tickets.get(i).getTimeByState();
+            data[i][4] = "" + tickets.get(i).getTicketServiceType().getTicketServiceType();
+
         }
         jTableTicketSystem.setModel(new DefaultTableModel(data, header));
     }
 
     private void initComponents() {
-        TableModel tableModel = new DefaultTableModel(data, header);
+        getData();
+        setCounters();
+        setTickets();
+        TableModel tableModel = new DefaultTableModel(data, header) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
         jTableTicketSystem.setModel(tableModel);
         jTableTicketSystem.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(100);
@@ -115,15 +92,23 @@ public class JPanelTicketSystem extends JFrame {
 
         jTableTicketSystem.setRowHeight(50);
 
-        getData();
-        setCounters();
+        jTableTicketSystem.addMouseListener(TicketSystemListener.getInstance());
+        jTableTicketSystem.setName("btnClickTickets");
+
     }
 
     private void getData() {
         tickets = Controller.getInstance().getTickets();
+        System.out.println(tickets);
     }
 
     private void setCounters() {
+        lblNumberInSolution.setText("" + Controller.getInstance().getTicketsByState(0).size());
+        lblNumberWaiting.setText("" + Controller.getInstance().getTicketsByState(1).size());
+        lblNumberReception.setText("" + Controller.getInstance().getTicketsByState(2).size());
+        lblNumberTesting.setText("" + Controller.getInstance().getTicketsByState(3).size());
+        lblNumberConcluded.setText("" + Controller.getInstance().getTicketsByState(4).size());
+        lblNumberInProcess.setText("" + Controller.getInstance().getTicketsByState(5).size());
     }
 
     public static JPanelTicketSystem getInstance() {
@@ -143,7 +128,6 @@ public class JPanelTicketSystem extends JFrame {
 
     public void sigIn() {
         String password = dialogTicketSystemPassword.getPassword();
-        System.out.println(password);
         // TODO: Check password
         if (password.equals("admin")) {
             hideDialogTicketSystemPassword();
@@ -156,5 +140,13 @@ public class JPanelTicketSystem extends JFrame {
     public static void main(String[] args) {
         JPanelTicketSystem jPanelTicketSystem = new JPanelTicketSystem();
         jPanelTicketSystem.setVisible(true);
+    }
+
+    public Ticket getTicket() {
+        int row = jTableTicketSystem.getSelectedRow();
+        if (row != -1) {
+            return tickets.get(row);
+        }
+        return null;
     }
 }

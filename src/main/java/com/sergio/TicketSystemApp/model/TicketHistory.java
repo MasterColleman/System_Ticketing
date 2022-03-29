@@ -20,7 +20,7 @@ public class TicketHistory {
     public void addDescription(String boxSubtitle, String boxContent, String clientName, ContactMethod sourceRequest,
                                String detailSourceRequest){/*detailSourceRequest es el correo, telefono o medio en
                                                             cuestion usado por el usuario para abrir ticket*/
-        ItemReplicaBox description = null;
+        ItemReplicaBox description = new ItemReplicaBox();
         description.setBoxTitle("Tiquete Abierto - Descripcion del Caso");
         description.setBoxSubtitle(boxSubtitle);//Aqui va el titulo del ticket
         description.setBoxTitleDescription(clientName + " abrió ticket por " + String.valueOf(sourceRequest) + ". " +
@@ -33,7 +33,7 @@ public class TicketHistory {
     //Metodo para Agregar Respuesta al cliente del Ticket
     public void addResponse( AssignedTechnician assignedTechnician, String boxContent, String clientName,
                                ContactMethod sourceRequest, String detailSourceRequest){
-        ItemReplicaBox response = null;
+        ItemReplicaBox response = new ItemReplicaBox();
         String agentName = String.valueOf(assignedTechnician);
         response.setBoxTitle(agentName + "en respuesta a" + clientName);
         response.setBoxSubtitle("Respuesta #" + newsCount++);
@@ -47,7 +47,7 @@ public class TicketHistory {
     //Metodo para Agregar Pregunta, Inquietud o solicitud nueva del cliente del Ticket
     public void addMessage( String boxTitle, String boxSubtitle, String boxContent, String clientName, ContactMethod sourceRequest,
                                String detailSourceRequest ){
-        ItemReplicaBox description = null;
+        ItemReplicaBox description = new ItemReplicaBox();
         description.setBoxTitle(boxTitle + " #" + newsCount++); //Pregunta, Inquietud o Solicitud. DEJAR DESPLEGABLE AQUI
         description.setBoxSubtitle(boxSubtitle);//Aqui va el Titulo de lo que trata  dicha cuestion
         description.setBoxTitleDescription(clientName + " envia mensaje a Agente por " + String.valueOf(sourceRequest) + ". " +
@@ -59,7 +59,7 @@ public class TicketHistory {
 
     //Metodo para Agregar Actualizacion del Ticket
     public void addUpdate( AssignedTechnician assignedTechnician, String boxSubtitle, String boxContent ){
-        ItemReplicaBox description = null;
+        ItemReplicaBox description = new ItemReplicaBox();
         String agentName = String.valueOf(assignedTechnician);
         description.setBoxTitle("Actualizacion #" + newsCount++);
         description.setBoxSubtitle(boxSubtitle);//Aqui va el Titulo de la actualizacion del ticket
@@ -72,7 +72,7 @@ public class TicketHistory {
     //Metodo para Agregar Actualizacion de Estado del Ticket
     //changeStateAuto() se ejecuta antes, en Ticket o TicketManager
     public void addStateUpdate( AssignedTechnician assignedTechnician, String boxSubtitle, String boxContent, TicketStatus ticketStatus ){
-        ItemReplicaBox description = null;
+        ItemReplicaBox description = new ItemReplicaBox();
         String agentName = String.valueOf(assignedTechnician);
         String state = String.valueOf(ticketStatus);
         description.setBoxTitle("Actualizacion a Estado: " + state );//Cambiar color en barra de estado y en esta caja
@@ -86,7 +86,7 @@ public class TicketHistory {
     //Metodo para Agregar y Fijar un cita por calendario con el cliente
     public void addCalendarAppointment(AssignedTechnician assignedTechnician, String boxSubtitle, String boxContent, TicketStatus ticketStatus,
                                        @NotNull LocalDateTime dateTimeCalendar){
-        ItemReplicaBox description = null;
+        ItemReplicaBox description = new ItemReplicaBox();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d ' de ' M ' de ' yyyy. ' A las ' kk .");
         String agentName = String.valueOf(assignedTechnician);
         String state = String.valueOf(ticketStatus);
@@ -101,7 +101,7 @@ public class TicketHistory {
     //Metodo para Agregar Finalizacion del ticket
     //addStateUpdate(...) se ejecuta despues de este metodo ya que vendria a ser el estado concluido, en Ticket o TicketManager
     public void addConclusion(AssignedTechnician assignedTechnician, String boxSubtitle, String boxContent){
-        ItemReplicaBox description = null;
+        ItemReplicaBox description = new ItemReplicaBox();
         String agentName = String.valueOf(assignedTechnician);
         description.setBoxTitle("Conclusion o Finalizacion de Ticket");
         description.setBoxSubtitle(boxSubtitle);//Aqui va el Titulo de la conclusion del ticket
@@ -114,7 +114,7 @@ public class TicketHistory {
     //Metodo para mandar mensaje de alerta de eliminacion del ticket
     //eliminateTicket(...) se ejecuta 1dia despues de este metodo
     public void addTicketDelete(AssignedTechnician assignedTechnician, String boxSubtitle, String boxContent){
-        ItemReplicaBox description = null;
+        ItemReplicaBox description = new ItemReplicaBox();
         String agentName = String.valueOf(assignedTechnician);
         description.setBoxTitle("Eliminacion de Ticket: " );//Cambiar a color Rojo Claro esta caja
         description.setBoxSubtitle(boxSubtitle);//Aqui va el Titulo del la eliminacion del ticket

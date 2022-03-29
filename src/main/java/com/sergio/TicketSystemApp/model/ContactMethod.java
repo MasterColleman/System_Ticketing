@@ -20,4 +20,8 @@ public enum ContactMethod {
         return contactMethod;
     }
 
+    @Override
+    public String toString() {
+        return getContactMethod();
+    }
 }

@@ -19,6 +19,14 @@ public class ItemReplicaBox {
         this.boxContent = boxContent;
     }
 
+    public ItemReplicaBox() {
+        this.boxTitle = "";
+        this.boxSubtitle = "";
+        this.boxTitleDescription = "";
+        this.boxNewsDateAndTime = "";
+        this.boxContent = "";
+    }
+
     public String getBoxTitle() {
         return boxTitle;
     }

@@ -1,10 +1,11 @@
 package com.sergio.TicketSystemApp.model;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class TicketManager {
+    private static TicketManager instance;
 
     private ArrayList<Ticket> ticketsList;
     private AssignedTechnician assignedTechnician;
@@ -17,6 +18,13 @@ public class TicketManager {
         ticketsList = new ArrayList<>();
     }
 
+    public static TicketManager getInstance() {
+        if (instance == null) {
+            instance = new TicketManager();
+        }
+        return instance;
+    }
+
     public ArrayList<Ticket> getTicketsList() {
         return this.ticketsList;
     }
@@ -24,6 +32,24 @@ public class TicketManager {
     public void setListCustomers(ArrayList<Ticket> ticketsList) {
         this.ticketsList = ticketsList;
     }
+
+    public List<Ticket> getTicketsByState(int state) {
+        return switch (state) {
+            case 0 -> getTicketByState(StateType.openByUser);
+            case 1 -> getTicketByState(StateType.awaitingAssignmentAndResponse);
+            case 2 -> getTicketByState(StateType.atReceptionDiagnosis);
+            case 3 -> getTicketByState(StateType.inProcessing);
+            case 4 -> getTicketByState(StateType.inTestingReview);
+            case 5 -> getTicketByState(StateType.concluded);
+            default -> List.of();
+        };
+    }
+
+    private List<Ticket> getTicketByState(StateType state) {
+        List<Ticket> tickets = new ArrayList<>();
+        for (Ticket ticket : ticketsList)
+            if (ticket.getTicketStatus().getActualState() == state) tickets.add(ticket);
+        return tickets;
 
     //Agregar Ticket a Lista de Tickets
     public void addTicket(Ticket ticket){
@@ -184,6 +210,7 @@ public class TicketManager {
 
     public void addTicketDeleteInTicketHistory(Ticket ticket, String boxSubtitle, String boxContent){
         ticket.getTicketHistory().addTicketDelete( ticket.getAssignedTechnician(), boxSubtitle, boxContent );
+
     }
 
 }
