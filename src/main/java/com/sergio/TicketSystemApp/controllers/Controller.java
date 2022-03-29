@@ -4,6 +4,8 @@ import com.sergio.TicketSystemApp.model.*;
 import com.sergio.TicketSystemApp.views.home.JPanelHome;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,11 +18,12 @@ public class Controller {
         ticketManager = TicketManager.getInstance();
         JPanelHome.getInstance();
         // add some tickets
+        List<String> listaTiempoPorEstados = new ArrayList<>(Arrays.asList("0 h","0 h","0 h","0 h","0 h"));
         Ticket ticket1 = new Ticket("#0001", TicketServiceType.technicalService, new TicketStatus(),
-                                    "Esto es un nombre de ticket", "Elizabeth", "eli@gmail.com", "3145422323",
-                                    ContactMethod.email, new TicketPriority(), AssignedTechnician.AgentFive,
+                                    "Esto es un nombre de ticket", "Elizabeth", "eli@gmail.com",
+                                    "3145422323", ContactMethod.email, new TicketPriority(), AssignedTechnician.AgentFive,
                                     new TicketHashtags(), ContactMethod.whatsApp, LocalDate.now(), null,
-                                    StateType.openByUser.getStateType(), new TicketHistory());
+                                    listaTiempoPorEstados, new TicketHistory());
         ticket1.getTicketHistory()
             .addDescription(ticket1.getTicketName(), "Esto es una descripcion del ticket", ticket1.getClientName(),
                             ticket1.getSourceRequest(), "detalles de " + "source requeas");

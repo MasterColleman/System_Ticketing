@@ -1,6 +1,9 @@
 package com.sergio.TicketSystemApp.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Ticket {
 
@@ -16,14 +19,14 @@ public class Ticket {
     private ContactMethod contactMethodToUpdateClient;//Enumerado
     private LocalDate ticketCreationDate;
     private TicketDeadline ticketDeadline;//Clase Plazo de Entrega
-    private String timeByState;
+    private List<String> timeByState;
     private TicketHistory ticketHistory;//Clase que contiene todas las cajas con los cambios del ticket incluida la descripcion
 
     public Ticket(String ticketNumber, TicketServiceType ticketServiceType, TicketStatus ticketStatus,
                   String ticketName, String clientName, String clientEmail, String clientCellPhoneNumber,
                   ContactMethod sourceRequest, TicketPriority ticketPriority, AssignedTechnician assignedTechnician,
                   TicketHashtags ticketHashtags, ContactMethod contactMethodToUpdateClient,
-                  LocalDate ticketCreationDate, TicketDeadline ticketDeadline, String timeByState,
+                  LocalDate ticketCreationDate, TicketDeadline ticketDeadline, List<String> timeByState,
                   TicketHistory ticketHistory) {
         this.ticketNumber = ticketNumber;
         this.ticketServiceType = ticketServiceType;
@@ -43,8 +46,30 @@ public class Ticket {
         this.ticketHistory = ticketHistory;
     }
 
+    //Metodo SOLO SE USA UNA VEZ para setear la lista de tiempos por estado
+    public void setTimeByState(List<String> firstTimeByState){
+        this.timeByState = firstTimeByState;
+    }
+
+    //Metodo para setear Tiempos por Estado para Actualizacion del Ticket.
+    //>>>>>>>>>>>>>>>>>>>>>>EJECUTAR CADA VEZ QUE SE CAMBIE DE ESTADO EN EL TICKET<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    public void setTimeByState(TicketStatus ticketStatus, TicketDeadline ticketDeadline,
+    LocalDateTime ticketCreationDate, TicketPriority ticketPriority, StateType stateTypeIn){
+        List<String> timeByStateList = new ArrayList<>(); int totalTime = 0;
+        int timeStop = (ticketPriority.getTimeForPriority()
+                    - ticketDeadline.getDeadlineTimeAtAnyTime(ticketCreationDate, ticketPriority, stateTypeIn));
+        switch (ticketStatus.getActualState()) {
+            case openByUser-> timeByStateList.set(0,timeStop + " h");
+            case inProcessing-> timeByStateList.set(1,timeStop + " h");
+            case awaitingAssignmentAndResponse-> timeByStateList.set(2,timeStop + " h");
+            case atReceptionDiagnosis-> timeByStateList.set(3,timeStop + " h");
+            case inTestingReview-> timeByStateList.set(4,timeStop + " h");
+        }
+        totalTime += timeStop;//NO HACE NADA XD
+    }
+
     public void setTicketNumber(int count) {
-        this.ticketNumber = "#" + count + switch (ticketServiceType) {
+        this.ticketNumber = "#00" + count + switch (ticketServiceType) {
             case technicalService -> "TES";
             case assembly -> "ENS";
             case micro_Consulting -> "MIC";
@@ -102,10 +127,6 @@ public class Ticket {
 
     public void setTicketDeadline(TicketDeadline ticketDeadline) {
         this.ticketDeadline = ticketDeadline;
-    }
-
-    public void setTimeByState() {
-        this.timeByState = "";
     }
 
     public void setTicketHistory(TicketHistory ticketHistory) {
@@ -168,7 +189,7 @@ public class Ticket {
         return ticketDeadline;
     }
 
-    public String getTimeByState() {
+    public List<String> getTimeByState() {
         return timeByState;
     }
 
