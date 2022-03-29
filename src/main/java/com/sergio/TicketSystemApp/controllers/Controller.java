@@ -40,8 +40,8 @@ public class Controller {
         return ticketManager.getTicketsList();
     }
 
-    public void createTicket(Object ticket) {
-        // TODO: implement
+    public void createTicket(Ticket ticket) {
+        ticketManager.addTicket(ticket);
     }
 
     public List<Object> getResponsesFromTicket(String i) {
@@ -54,8 +54,5 @@ public class Controller {
         return ticketManager.getTicketsByState(state);
     }
 
-    public List<Object> getResponsesFromTicket(String i) {
-        // TODO: implement
-        return null;
-    }
+
 }

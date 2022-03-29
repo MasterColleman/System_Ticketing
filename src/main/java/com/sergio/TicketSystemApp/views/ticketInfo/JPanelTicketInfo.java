@@ -1,24 +1,18 @@
 package com.sergio.TicketSystemApp.views.ticketInfo;
 
-import com.sergio.TicketSystemApp.controllers.Controller;
-
 import com.sergio.TicketSystemApp.model.ItemReplicaBox;
 import com.sergio.TicketSystemApp.model.StateType;
 import com.sergio.TicketSystemApp.model.Ticket;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardResponse;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardTicket;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.RectInfo;
-import com.sergio.TicketSystemApp.views.ticketInfo.dialogSearchTicket.JDialogSearchTicket;
-
 
 import javax.swing.*;
 import java.awt.*;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import static com.sergio.TicketSystemApp.model.StateType.atReceptionDiagnosis;
 import static com.sergio.TicketSystemApp.utils.StringUtils.toHtml;
 
 public class JPanelTicketInfo extends JFrame {
@@ -90,7 +84,7 @@ public class JPanelTicketInfo extends JFrame {
     public void setUpCard(Ticket ticket) {
         titleTicket.setText("Titulo del Ticket: " + ticket.getTicketName());
         idTicket.setText("Ticket: " + ticket.getTicketNumber());
-        stateTicket.setText("Estado del Ticket:" + ticket.getTimeByState());
+        stateTicket.setText("Estado del Ticket:" + ticket.getTicketStatus().getActualState().getStateType());
         responsesPanel.removeAll();
         setCard(ticket);
         setResponses(ticket);
@@ -128,7 +122,7 @@ public class JPanelTicketInfo extends JFrame {
         states.put("Diagnostic", new RectInfo(toHtml("En Recepcion /\nDiagnostico"), new Color(0xFFE699)));
         states.put("Process", new RectInfo(toHtml("En Procesamiento"), new Color(0xBDD7EE)));
         states.put("Testing", new RectInfo(toHtml("En Testeo /\nRevisión"), new Color(0xCCCCFF)));
-        states.put("Concluded", new RectInfo(toHtml("Concluido"), new Color(0x99FF33)));
+        states.put("Concluded", new RectInfo(toHtml("Concluido"), new Color(0xA8E867)));
 
         for (String key : states.keySet()) {
             statesPanel.add(states.get(key));

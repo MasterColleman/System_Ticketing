@@ -55,11 +55,10 @@ public class TicketHashtags {
 
     //Metodo para habilitar una lista de palabras clave especificas a cada tipo de servicio
     public void enableHashtagList(@NotNull TicketServiceType serviceType){
-        ArrayList<String>hashtagsList = this.hashtagsListToTicket;
         switch (serviceType){
-            case technicalService, technicalSupport -> hashtagsList = this.technicalSupportAndServiceList;
-            case assembly -> hashtagsList = this.assemblyList;
-            case micro_Consulting -> hashtagsList = this.micro_ConsultingList;
+            case technicalService, technicalSupport -> this.hashtagsListToTicket = this.technicalSupportAndServiceList;
+            case assembly -> this.hashtagsListToTicket = this.assemblyList;
+            case micro_Consulting -> this.hashtagsListToTicket = this.micro_ConsultingList;
         }
     }
 

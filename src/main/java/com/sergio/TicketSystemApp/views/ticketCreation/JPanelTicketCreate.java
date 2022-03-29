@@ -1,7 +1,9 @@
 package com.sergio.TicketSystemApp.views.ticketCreation;
 
+import com.sergio.TicketSystemApp.controllers.Controller;
 import com.sergio.TicketSystemApp.model.ContactMethod;
 import com.sergio.TicketSystemApp.model.StateType;
+import com.sergio.TicketSystemApp.model.Ticket;
 import com.sergio.TicketSystemApp.model.TicketServiceType;
 
 import javax.swing.*;
@@ -59,10 +61,10 @@ public class JPanelTicketCreate extends JFrame {
 
     public boolean validateFields() {
         //regex for email -> ^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$
-        //regex for phone -> ^[0-9]{9}$
+        //regex for phone -> ^3[0-9]{9}$
         return !txtName.getText().isEmpty() && txtEmail.getText()
             .matches("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$") && !txtEmail.getText()
-            .isEmpty() && txtPhone.getText().matches("^[0-9]{9}$") && !txtPhone.getText()
+            .isEmpty() && txtPhone.getText().matches("^3[0-9]{9}$") && !txtPhone.getText()
             .isEmpty() && !txtTitle.getText().isEmpty() && !Objects.requireNonNull(cmbType.getSelectedItem()).toString()
             .isEmpty() && !txaDescription.getText().isEmpty() && !Objects.requireNonNull(
             cmbResponseType.getSelectedItem()).toString().isEmpty() && termsCheckBox.isSelected();
@@ -70,6 +72,9 @@ public class JPanelTicketCreate extends JFrame {
 
 
     public void sendTicket() {
+        if (validateFields()) {
+            JOptionPane.showMessageDialog(this, "Ticket created successfully");
+        } else JOptionPane.showMessageDialog(this, "Please fill all the fields correctly");
     }
 
     public static JPanelTicketCreate getInstance() {
@@ -79,13 +84,12 @@ public class JPanelTicketCreate extends JFrame {
         return instance;
     }
 
-    public static void main(String[] args) {
-        JPanelTicketCreate frame = new JPanelTicketCreate();
 
+    public Ticket getTicket() {
+        return null;
     }
 
-    public Object getTicket() {
-        // TODO create ticket from form
-        return null;
+    public void showErrorMessage(String error, String message) {
+        JOptionPane.showMessageDialog(this, error, message, JOptionPane.ERROR_MESSAGE);
     }
 }
