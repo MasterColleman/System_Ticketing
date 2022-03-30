@@ -1,5 +1,6 @@
 package com.sergio.TicketSystemApp.views.ticketInfo.panelEditTicket;
 
+import com.sergio.TicketSystemApp.controllers.Controller;
 import com.sergio.TicketSystemApp.model.*;
 import com.sergio.TicketSystemApp.views.ticketInfo.JPanelTicketInfo;
 import com.sergio.TicketSystemApp.views.ticketInfo.TicketInfoListener;
@@ -307,12 +308,11 @@ public class JPanelEditTicket extends JDialog {
         lblPriority.setText(ticket.getTicketPriority().getPriority().getPriorityType());
         lblType.setText(ticket.getTicketServiceType().getTicketServiceType());
         lblAsigned.setText(ticket.getAssignedTechnician().getAssignedTechnician());
-        lblPlazo.setText("Plazo de entrega : " + ticket.getTicketDeadline()
-            .getDeadlineTimeAtAnyTime(ticket.getTicketCreationDate(), ticket.getTicketPriority(),
-                                      ticket.getTicketStatus().getActualState()));
+        lblPlazo.setText("Plazo de entrega : " + Controller.getInstance().getPlazo(ticket.getTicketPriority().getPriority()) + " horas");
         lblCreationDate.setText("Fecha de Creación: " + ticket.getTicketCreationDate()
             .format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
         lblHastTags.setText(ticket.getTicketHashtags().getHashtags());
+        lblTotalTime.setVisible(false);
     }
 
     public void setCard(Ticket ticket) {

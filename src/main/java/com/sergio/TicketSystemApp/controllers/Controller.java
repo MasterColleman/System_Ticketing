@@ -137,4 +137,7 @@ public class Controller {
         ticketManager.updateTicketPriority(ticket, priority);
     }
 
+    public int getPlazo(PriorityType priority) {
+        return ticketManager.setTimePriorityAuto(priority);
+    }
 }

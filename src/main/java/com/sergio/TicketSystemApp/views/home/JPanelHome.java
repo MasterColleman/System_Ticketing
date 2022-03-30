@@ -41,7 +41,7 @@ public class JPanelHome extends JFrame {
     }
 
     public void initComponents() {
-        setContentPane(panelHome);
+        this.setContentPane(panelHome);
         lblSystem.setName("btnSystem");
         lblCreate.setName("btnCreate");
         lblView.setName("btnView");
