@@ -19,4 +19,8 @@ public enum AssignedTechnician {
         return assignedTechnician;
     }
 
+    @Override
+    public String toString() {
+        return getAssignedTechnician();
+    }
 }

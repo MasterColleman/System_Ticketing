@@ -17,4 +17,9 @@ public enum PriorityType {
         return priorityType;
     }
 
+    @Override
+    public String toString() {
+        return getPriorityType();
+    }
+
 }
