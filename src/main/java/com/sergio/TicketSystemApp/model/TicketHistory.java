@@ -73,13 +73,25 @@ public class TicketHistory {
     public void addStateUpdate( AssignedTechnician assignedTechnician, String boxSubtitle, String boxContent, TicketStatus ticketStatus ){
         ItemReplicaBox description = new ItemReplicaBox();
         String agentName = String.valueOf(assignedTechnician);
-        String state = String.valueOf(ticketStatus);
+        String state = changeState(ticketStatus);
         description.setBoxTitle("Actualizacion a Estado: " + state );//Cambiar color en barra de estado y en esta caja
         description.setBoxSubtitle(boxSubtitle);//Aqui va el Titulo de la actualizacion de estado del ticket
         description.setBoxTitleDescription(agentName + " cambia estado del ticket por sistema. ");
         description.setBoxNewsDateAndTime();
         description.setBoxContent(boxContent);
         listItemReplicaBoxes.add(description);
+    }
+
+    public String changeState(TicketStatus ticketStatus){
+        StateType state = ticketStatus.getActualState();
+        switch (state) {
+            case openByUser -> state = StateType.awaitingAssignmentAndResponse;
+            case awaitingAssignmentAndResponse -> state = StateType.atReceptionDiagnosis;
+            case atReceptionDiagnosis -> state = StateType.inProcessing;
+            case inProcessing -> state = StateType.inTestingReview;
+            case inTestingReview -> state = StateType.concluded;
+        }
+        return String.valueOf(state);
     }
 
     //Metodo para Agregar y Fijar un cita por calendario con el cliente
