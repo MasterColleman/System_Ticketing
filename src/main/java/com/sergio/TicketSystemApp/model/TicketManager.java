@@ -219,4 +219,14 @@ public class TicketManager {
 
     }
 
+    public int setTimePriorityAuto(PriorityType priorityType) {//Setea al maximo de horas el plazo de entrega
+        int hours=0;
+        switch (priorityType) {
+            case low -> hours=32;
+            case medium -> hours=24;
+            case high -> hours=16;
+            case urgent -> hours=6;
+        }return hours;
+    }
+
 }

@@ -19,18 +19,28 @@ public class Controller {
         ticketManager = TicketManager.getInstance();
         JPanelHome.getInstance();
         // add some tickets
+        String description = "Hola! Quería pedirles ayuda a ustedes, ya que desde hace unos días he intentado cargar mi " +
+                "celular y no he podido conseguir que la barra de estado de energía de la batería llegue al 100%, aun " +
+                "dejándolo toda la noche conectado, compre hasta un cargador nuevo (oficial) y siguió igual. Además de " +
+                "que no carga por completo, se descarga cuando llega al 15% y la verdad uso mucho mi celular por contactos" +
+                " laborales y chat del trabajo. Mi celular es muy buen celular cuando lo compre me informe bien " +
+                "(me costó mucho y que tiene buenas especificaciones), aunque es cierto que llevo varios años con él, " +
+                "unos 4 al menos, y solo hasta hace poco ha empezado a fallar.";
+        String response = "Hola Elizabeth! Lo primero que haremos es abrir un ticket en nuestro sistema y subir la " +
+                "información al mismo para que si gustas le hagas seguimiento por ahí, sin embargo, si quieres podemos " +
+                "enviarte las actualizaciones a tu caso por otro medio.";
         List<String> listaTiempoPorEstados = new ArrayList<>(Arrays.asList("0 h", "0 h", "0 h", "0 h", "0 h"));
-        Ticket ticket1 = new Ticket("#0001", TicketServiceType.technicalService, new TicketStatus(),
-                                    "Esto es un nombre de ticket", "Elizabeth", "eli@gmail.com", "3145422323",
-                                    ContactMethod.email, new TicketPriority(), AssignedTechnician.AgentFive,
-                                    new TicketHashtags(), ContactMethod.whatsApp, LocalDateTime.now(),
-                                    new TicketDeadline(), listaTiempoPorEstados, new TicketHistory());
+        Ticket ticket1 = new Ticket("#2902022SERTEC1", TicketServiceType.technicalService, new TicketStatus(),
+                                    "Problemas con mi celular", "Elizabeth", "eli1993@gmail.com",
+                                    "3145422323", ContactMethod.email, new TicketPriority(),
+                                    AssignedTechnician.AgentFive, new TicketHashtags(), ContactMethod.whatsApp,
+                                    LocalDateTime.now(), new TicketDeadline(), listaTiempoPorEstados, new TicketHistory());
         ticket1.getTicketHistory()
-            .addDescription(ticket1.getTicketName(), "Esto es una descripcion del ticket", ticket1.getClientName(),
-                            ticket1.getSourceRequest(), "detalles de " + "source requeas");
+            .addDescription(ticket1.getTicketName(), description, ticket1.getClientName(),
+                            ticket1.getSourceRequest(), "enviado a" + "hex.st.tech@gmail.com");
         ticket1.getTicketHistory()
-            .addResponse(AssignedTechnician.AgentFive, "Esto es una respuesta del agente 5", "Elizabeth",
-                         ContactMethod.email, "aqui no se que poner");
+            .addResponse(AssignedTechnician.AgentFive, response, "Elizabeth",
+                         ContactMethod.email, "eli1993@gmail.com");
 
         ticketManager.addTicket(ticket1);
     }
