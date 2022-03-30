@@ -44,6 +44,10 @@ public class TicketInfoListener implements ActionListener {
             case "Update" -> {
                 update();
             }
+            case "UpdateTime" -> {
+                Controller.getInstance().updateTime(JPanelTicketInfo.getInstance().getTicket(),
+                                                    JPanelEditTicket.getInstance().getState());
+            }
         }
     }
 
@@ -61,14 +65,27 @@ public class TicketInfoListener implements ActionListener {
         if (type == 1) {
             List<String> data = JPanelEditTicket.getInstance().getDataType1();
             Controller.getInstance().addStateUpdateInTicketHistory(data.get(0), data.get(1), data.get(2));
+            Controller.getInstance().updateState(JPanelTicketInfo.getInstance().getTicket());
         }
         if (type == 2) {
             List<String> data = JPanelEditTicket.getInstance().getDataType2();
             Controller.getInstance().addCalendarAppointmentInTicketHistory(data.get(0), data.get(1), data.get(2),
-                                                                           LocalDateTime.parse(data.get(3),
+                                                                           LocalDateTime.parse(data.get(3) + " 00:00",
                                                                                                DateTimeFormatter.ofPattern(
-                                                                                                   "dd/MM/yyyy")));
+                                                                                                   "dd/MM/yyyy HH:mm")));
+            Controller.getInstance().updateCalendarAppointment(JPanelTicketInfo.getInstance().getTicket());
         }
+        if (type == 4) {
+            List<String> data = JPanelEditTicket.getInstance().getDataType4();
+            Controller.getInstance().addConclusionInTicketHistory(data.get(0), data.get(1), data.get(2));
+        }
+        Controller.getInstance().updateServiceType(JPanelTicketInfo.getInstance().getTicket(),
+                                                   JPanelEditTicket.getInstance().getServiceType());
+        Controller.getInstance().updateAgent(JPanelTicketInfo.getInstance().getTicket(),
+                                             JPanelEditTicket.getInstance().getAgent());
+        Controller.getInstance().updatePriority(JPanelTicketInfo.getInstance().getTicket(),
+                                                JPanelEditTicket.getInstance().getPriority());
+
     }
 
     private void searchTicket() {

@@ -98,7 +98,7 @@ public class JPanelTicketCreate extends JFrame {
                           txtName.getText(), txtEmail.getText(), txtPhone.getText(),
                           (ContactMethod) cmbResponseType.getSelectedItem(), new TicketPriority(),
                           AssignedTechnician.AgentOne, new TicketHashtags(),
-                          (ContactMethod) cmbResponseType.getSelectedItem(), null, null, null, new TicketHistory());
+                          (ContactMethod) cmbResponseType.getSelectedItem(), null, new TicketDeadline(), null, new TicketHistory());
     }
 
     public void showErrorMessage(String error, String message) {

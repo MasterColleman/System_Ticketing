@@ -56,7 +56,7 @@ public class JPanelEditTicket extends JDialog {
     private JLabel timeSix;
     private JLabel lblTotalTime;
     private JTextField textField1;
-    private JButton actualizarTiempoButton;
+    private JButton btnUpdateTime;
     private JPanel panelDescription;
     private JButton btnUpdate;
     private JPanel panelCliente;
@@ -238,6 +238,10 @@ public class JPanelEditTicket extends JDialog {
         txtFechaCita.addKeyListener(EditTicketListener.getInstance());
         txtTitle.addKeyListener(EditTicketListener.getInstance());
         txtAgenteA.addKeyListener(EditTicketListener.getInstance());
+
+        btnUpdateTime.addActionListener(TicketInfoListener.getInstance());
+        btnUpdateTime.setActionCommand("UpdateTime");
+
     }
 
     private void createUIComponents() {
@@ -421,37 +425,59 @@ public class JPanelEditTicket extends JDialog {
     }
 
     public List<String> getUpdate() {
-        return List.of(lblIdTicket.getText(), txtUpdateState.getText(), txaState.getText());
+        return List.of(lblIdTicket.getText().substring(8), txtUpdateState.getText(), txaState.getText());
     }
 
     public List<String> getCita() {
-        return List.of(lblIdTicket.getText(), txtTitleCita.getText(), txaCita.getText(), txtFechaCita.getText());
+        return List.of(lblIdTicket.getText().substring(8), txtTitleCita.getText(), txaCita.getText(), txtFechaCita.getText());
     }
 
     public List<String> getUpdateCase() {
-        return List.of(lblIdTicket.getText(), txtTitleUpdateCase.getText(), txaUpdateCase.getText());
+        return List.of(lblIdTicket.getText().substring(8), txtTitleUpdateCase.getText(), txaUpdateCase.getText());
     }
 
     public List<String> getConclusion() {
-        return List.of(lblIdTicket.getText(), txtTitleConclusion.getText(), txaFinished.getText());
+        return List.of(lblIdTicket.getText().substring(8), txtTitleConclusion.getText(), txaFinished.getText());
     }
 
     public List<String> getDataType0() {
-        List<String> data = List.of(lblIdTicket.getText(), txtTitle.getText(), txtTitle.getText(), txaState.getText(),
+        List<String> data = List.of(lblIdTicket.getText().substring(8), txtTitle.getText(), txtTitle.getText(), txaState.getText(),
                                     txtAgenteA.getText());
         return data;
     }
 
     public List<String> getDataType3() {
-        List<String> data = List.of(lblIdTicket.getText(), txtTitleUpdateCase.getText(), txaUpdateCase.getText());
+        List<String> data = List.of(lblIdTicket.getText().substring(8), txtTitleUpdateCase.getText(), txaUpdateCase.getText());
         return data;
     }
 
     public List<String> getDataType1() {
-        return List.of(lblIdTicket.getText(), txtUpdateState.getText(), txaUpdateState.getText());
+        System.out.println(lblIdTicket.getText().substring(8));
+        return List.of(lblIdTicket.getText().substring(8), txtUpdateState.getText(), txaUpdateState.getText());
     }
 
     public List<String> getDataType2() {
-        return List.of(lblIdTicket.getText(), txtTitleCita.getText(), txaCita.getText(), txtFechaCita.getText());
+        return List.of(lblIdTicket.getText().substring(8), txtTitleCita.getText(), txaCita.getText(), txtFechaCita.getText());
     }
+
+    public StateType getState() {
+        return (StateType) cmbState.getSelectedItem();
+    }
+
+    public List<String> getDataType4() {
+        return List.of(lblIdTicket.getText().substring(8), txtTitleConclusion.getText(), txaFinished.getText());
+    }
+
+    public TicketServiceType getServiceType() {
+        return (TicketServiceType) cmbType.getSelectedItem();
+    }
+
+    public AssignedTechnician getAgent() {
+        return (AssignedTechnician) cmbAsigned.getSelectedItem();
+    }
+
+    public PriorityType getPriority() {
+        return (PriorityType) cmbPrioriry.getSelectedItem();
+    }
+
 }

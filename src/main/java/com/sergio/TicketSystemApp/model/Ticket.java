@@ -46,6 +46,7 @@ public class Ticket {
         this.ticketDeadline = ticketDeadline;
         this.timeByState = timeByState;
         this.ticketHistory = ticketHistory;
+        this.timeByState = new ArrayList<>(5);
     }
 
     //Metodo SOLO SE USA UNA VEZ para setear la lista de tiempos por estado
@@ -57,7 +58,6 @@ public class Ticket {
     //>>>>>>>>>>>>>>>>>>>>>>EJECUTAR CADA VEZ QUE SE CAMBIE DE ESTADO EN EL TICKET<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public void setTimeByState(TicketStatus ticketStatus, TicketDeadline ticketDeadline,
     LocalDateTime ticketCreationDate, TicketPriority ticketPriority, StateType stateTypeIn){
-        timeByState = new ArrayList<>();
         int timeStop = (ticketPriority.getTimeForPriority()
                     - ticketDeadline.getDeadlineTimeAtAnyTime(ticketCreationDate, ticketPriority, stateTypeIn));
         switch (ticketStatus.getActualState()) {

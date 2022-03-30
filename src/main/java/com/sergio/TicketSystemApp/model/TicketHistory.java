@@ -73,7 +73,7 @@ public class TicketHistory {
     public void addStateUpdate( AssignedTechnician assignedTechnician, String boxSubtitle, String boxContent, TicketStatus ticketStatus ){
         ItemReplicaBox description = new ItemReplicaBox();
         String agentName = String.valueOf(assignedTechnician);
-        String state = String.valueOf(ticketStatus);
+        String state = ticketStatus.getActualState().getStateType();
         description.setBoxTitle("Actualizacion a Estado: " + state );//Cambiar color en barra de estado y en esta caja
         description.setBoxSubtitle(boxSubtitle);//Aqui va el Titulo de la actualizacion de estado del ticket
         description.setBoxTitleDescription(agentName + " cambia estado del ticket por sistema. ");

@@ -21,10 +21,10 @@ public class Controller {
         // add some tickets
         List<String> listaTiempoPorEstados = new ArrayList<>(Arrays.asList("0 h", "0 h", "0 h", "0 h", "0 h"));
         Ticket ticket1 = new Ticket("#0001", TicketServiceType.technicalService, new TicketStatus(),
-                                    "Esto es un nombre de ticket", "Elizabeth", "eli@gmail.com",
-                                    "3145422323", ContactMethod.email, new TicketPriority(), AssignedTechnician.AgentFive,
-                                    new TicketHashtags(), ContactMethod.whatsApp, LocalDateTime.now(), new TicketDeadline(),
-                                    listaTiempoPorEstados, new TicketHistory());
+                                    "Esto es un nombre de ticket", "Elizabeth", "eli@gmail.com", "3145422323",
+                                    ContactMethod.email, new TicketPriority(), AssignedTechnician.AgentFive,
+                                    new TicketHashtags(), ContactMethod.whatsApp, LocalDateTime.now(),
+                                    new TicketDeadline(), listaTiempoPorEstados, new TicketHistory());
         ticket1.getTicketHistory()
             .addDescription(ticket1.getTicketName(), "Esto es una descripcion del ticket", ticket1.getClientName(),
                             ticket1.getSourceRequest(), "detalles de " + "source requeas");
@@ -102,5 +102,29 @@ public class Controller {
         ticketManager.addConclusionInTicketHistory(ticket, boxSubtitle, boxContent);
     }
 
+
+    public void updateTime(Ticket ticket, StateType state) {
+        ticketManager.updateTimeByState(ticket, state);
+        ticketManager.updateTicketDeadline(ticket,state);
+    }
+
+    public void updateState(Ticket ticket) {
+        ticketManager.updateTicketStatus(ticket);
+    }
+
+    public void updateCalendarAppointment(Ticket ticket) {
+    }
+
+    public void updateServiceType(Ticket ticket, TicketServiceType type) {
+        ticketManager.updateTicketServiceType(ticket, type);
+    }
+
+    public void updateAgent(Ticket ticket, AssignedTechnician agent) {
+        ticketManager.updateTicketAssignedTechnician(ticket, agent);
+    }
+
+    public void updatePriority(Ticket ticket, PriorityType priority) {
+        ticketManager.updateTicketPriority(ticket, priority);
+    }
 
 }
