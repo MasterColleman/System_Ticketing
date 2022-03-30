@@ -1,6 +1,7 @@
 package com.sergio.TicketSystemApp.views.ticketInfo.panelEditTicket;
 
 import com.sergio.TicketSystemApp.model.*;
+import com.sergio.TicketSystemApp.views.ticketInfo.TicketInfoListener;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardResponse;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardTicket;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.RectInfo;
@@ -27,10 +28,10 @@ public class JPanelEditTicket extends JDialog {
     private JComboBox<AssignedTechnician> cmbAsigned;
     private JComboBox<StateType> cmbState;
     private JComboBox<ContactMethod> cmbContact;
-    private JTextArea txaEliminated;
     private JTextArea txaFinished;
+    private JTextArea txaUpdateCase;
     private JTextArea txaCita;
-    private JTextArea txaDiagnostico;
+    private JTextArea txaUpdateState;
     private JTextArea txaState;
     private JPanel panelCard;
     private JPanel panelResponses;
@@ -76,20 +77,29 @@ public class JPanelEditTicket extends JDialog {
     private JPanel panelUTiempos;
     private JPanel panelUPlazo;
     private JPanel panelUFecha;
-    private JTextField textField2;
-    private JComboBox comboBox1;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
-    private JTextField textField6;
-    private JTextField textField7;
-    private JTextField textField8;
+
+    private JTextField txtTitle;
+    private JComboBox<ContactMethod> cmbUContact;
+    private JTextField txtAgenteA;
+    private JTextField txtUpdateState;
+    private JTextField txtTitleCita;
+    private JTextField txtFechaCita;
+    private JTextField txtTitleUpdateCase;
+    private JTextField txtTitleConclusion;
+    private JPanel panelResp1;
+    private JPanel panelResp2;
+    private JPanel panelResp3;
+    private JPanel panelResp4;
+    private JPanel panelResp5;
+    private JLabel citaTicket;
+    private JLabel actTicket;
 
     private static JPanelEditTicket instance;
     private Map<String, RectInfo> states;
 
     private JCardTicket card;
     private List<JCardResponse> responses;
+    private int typeUpdate;
 
     public static JPanelEditTicket getInstance() {
         if (instance == null) {
@@ -143,14 +153,28 @@ public class JPanelEditTicket extends JDialog {
         panelUTiempos.setBackground(Color.WHITE);
         panelUPlazo.setBackground(Color.WHITE);
         panelUFecha.setBackground(Color.WHITE);
+        panelResp1.setBackground(Color.WHITE);
+        panelResp2.setBackground(Color.WHITE);
+        panelResp3.setBackground(Color.WHITE);
+        panelResp4.setBackground(Color.WHITE);
+        panelResp5.setBackground(Color.WHITE);
+
+
+        // set border to panelResp to make it look like a card
+        panelResp1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        panelResp2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        panelResp3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        panelResp4.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        panelResp5.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 
         // set text area border to black
-        txaEliminated.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         txaFinished.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txaUpdateCase.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         txaCita.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        txaDiagnostico.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txaUpdateState.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         txaState.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
 
         // set look and feel
         try {
@@ -189,7 +213,31 @@ public class JPanelEditTicket extends JDialog {
         cmbContact.addItem(ContactMethod.inPerson);
         cmbContact.addItem(ContactMethod.homeDelivery);
 
-        lblTotalTime.setText("Tiempo Total: " );
+        cmbUContact.addItem(ContactMethod.ticketSystem);
+        cmbUContact.addItem(ContactMethod.whatsApp);
+        cmbUContact.addItem(ContactMethod.email);
+        cmbUContact.addItem(ContactMethod.phoneCall);
+        cmbUContact.addItem(ContactMethod.inPerson);
+        cmbUContact.addItem(ContactMethod.homeDelivery);
+
+
+        lblTotalTime.setText("Tiempo Total: ");
+
+        // add KeyListener to text areas and text fields
+        txaFinished.addKeyListener(EditTicketListener.getInstance());
+        txaUpdateCase.addKeyListener(EditTicketListener.getInstance());
+        txaCita.addKeyListener(EditTicketListener.getInstance());
+        txaUpdateState.addKeyListener(EditTicketListener.getInstance());
+        txaState.addKeyListener(EditTicketListener.getInstance());
+
+        txtUpdateState.addKeyListener(EditTicketListener.getInstance());
+        txtTitleUpdateCase.addKeyListener(EditTicketListener.getInstance());
+        txtTitleConclusion.addKeyListener(EditTicketListener.getInstance());
+        txtTitleCita.addKeyListener(EditTicketListener.getInstance());
+
+        txtFechaCita.addKeyListener(EditTicketListener.getInstance());
+        txtTitle.addKeyListener(EditTicketListener.getInstance());
+        txtAgenteA.addKeyListener(EditTicketListener.getInstance());
     }
 
     private void createUIComponents() {
@@ -244,7 +292,13 @@ public class JPanelEditTicket extends JDialog {
         setResponses(ticket);
         enableState(ticket.getTicketStatus().getActualState());
         setTexts(ticket);
-        lblTotalTime.setText("Tiempo Total: " + ticket.getTotalTime());
+        lblTotalTime.setText(
+            "Tiempo Total: " + ticket.getTimeByState().stream().map(o -> o.replace("\\s+", "").replace("h", "")
+                .replace(" ", ""))
+                .reduce((a, b) -> String.valueOf(Integer.parseInt(a) + Integer.parseInt(b))).get());
+
+        btnUpdate.addActionListener(TicketInfoListener.getInstance());
+        btnUpdate.setActionCommand("Update");
     }
 
     private void setTexts(Ticket ticket) {
@@ -285,5 +339,100 @@ public class JPanelEditTicket extends JDialog {
     public static void main(String[] args) {
         JPanelEditTicket jPanelEditTicket = new JPanelEditTicket();
         jPanelEditTicket.setVisible(true);
+    }
+
+    public void isTextInField() {
+        if (!txtTitleUpdateCase.getText().isEmpty() || !txaUpdateCase.getText().isEmpty()) {
+            txtFechaCita.setEnabled(false);
+            txaFinished.setEnabled(false);
+            txtTitleCita.setEnabled(false);
+            txtTitleConclusion.setEnabled(false);
+            txtUpdateState.setEnabled(false);
+            txaCita.setEnabled(false);
+            txaUpdateState.setEnabled(false);
+            txaState.setEnabled(false);
+            txtAgenteA.setEnabled(false);
+            typeUpdate = 3;
+            txtTitle.setEnabled(false);
+        } else if (!txtFechaCita.getText().isEmpty() || !txtTitleCita.getText().isEmpty() || !txaCita.getText()
+            .isEmpty()) {
+            txtTitleUpdateCase.setEnabled(false);
+            txtUpdateState.setEnabled(false);
+            txaFinished.setEnabled(false);
+            txaUpdateCase.setEnabled(false);
+            txaUpdateState.setEnabled(false);
+            txtTitleConclusion.setEnabled(false);
+            txtTitle.setEnabled(false);
+            txaState.setEnabled(false);
+            txtAgenteA.setEnabled(false);
+            typeUpdate = 2;
+        } else if (!txtUpdateState.getText().isEmpty() || !txaUpdateState.getText().isEmpty()) {
+            txtTitleUpdateCase.setEnabled(false);
+            txtFechaCita.setEnabled(false);
+            txtTitleCita.setEnabled(false);
+            txaCita.setEnabled(false);
+            txaFinished.setEnabled(false);
+            txtTitleConclusion.setEnabled(false);
+            txaUpdateCase.setEnabled(false);
+            txtTitle.setEnabled(false);
+            txaState.setEnabled(false);
+            txtAgenteA.setEnabled(false);
+            typeUpdate = 1;
+        } else if (!txtTitleConclusion.getText().isEmpty() || !txaFinished.getText().isEmpty()) {
+            txtTitleUpdateCase.setEnabled(false);
+            txtFechaCita.setEnabled(false);
+            txtTitleCita.setEnabled(false);
+            txaCita.setEnabled(false);
+            txaUpdateCase.setEnabled(false);
+            txaUpdateState.setEnabled(false);
+            txtUpdateState.setEnabled(false);
+            txtTitle.setEnabled(false);
+            txaState.setEnabled(false);
+            txtAgenteA.setEnabled(false);
+            typeUpdate = 4;
+        } else if (!txaState.getText().isEmpty() || !txtTitle.getText().isEmpty() || !txtAgenteA.getText().isEmpty()) {
+            txtTitleUpdateCase.setEnabled(false);
+            txtFechaCita.setEnabled(false);
+            txtTitleCita.setEnabled(false);
+            txaCita.setEnabled(false);
+            txaUpdateCase.setEnabled(false);
+            txaUpdateState.setEnabled(false);
+            txtUpdateState.setEnabled(false);
+            txaFinished.setEnabled(false);
+            txtTitleConclusion.setEnabled(false);
+            typeUpdate = 0;
+        } else {
+            txtTitle.setEnabled(true);
+            txtTitleUpdateCase.setEnabled(true);
+            txtFechaCita.setEnabled(true);
+            txtTitleCita.setEnabled(true);
+            txaCita.setEnabled(true);
+            txaUpdateCase.setEnabled(true);
+            txaUpdateState.setEnabled(true);
+            txtUpdateState.setEnabled(true);
+            txtTitleConclusion.setEnabled(true);
+            txaFinished.setEnabled(true);
+            txtAgenteA.setEnabled(true);
+        }
+    }
+
+    public int getTypeUpdate() {
+        return typeUpdate;
+    }
+
+    public List<String> getUpdate() {
+        return List.of(lblIdTicket.getText(), txtUpdateState.getText(), txaState.getText());
+    }
+
+    public List<String> getCita() {
+        return List.of(lblIdTicket.getText(), txtTitleCita.getText(), txaCita.getText(), txtFechaCita.getText());
+    }
+
+    public List<String> getUpdateCase() {
+        return List.of(lblIdTicket.getText(), txtTitleUpdateCase.getText(), txaUpdateCase.getText());
+    }
+
+    public List<String> getConclusion() {
+        return List.of(lblIdTicket.getText(), txtTitleConclusion.getText(), txaFinished.getText());
     }
 }

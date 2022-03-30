@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.sergio.TicketSystemApp.views.ticketInfo.panelEditTicket.JPanelEditTicket">
   <scrollpane id="64b38" binding="scroll">
     <constraints>
-      <xy x="20" y="20" width="590" height="1564"/>
+      <xy x="20" y="20" width="591" height="1626"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -568,7 +568,7 @@
                   <text value="Actualizar Datos"/>
                 </properties>
               </component>
-              <grid id="17bf" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="17bf" binding="panelResp1" layout-manager="GridLayoutManager" row-count="5" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -578,100 +578,90 @@
                 <children>
                   <component id="91602" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="6" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Agregar Respuesta al Cliente"/>
                     </properties>
                   </component>
-                  <grid id="4803e" layout-manager="GridLayoutManager" row-count="4" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
+                  <component id="7e95a" class="javax.swing.JTextArea" binding="txaState">
                     <constraints>
-                      <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="4" column="1" row-span="1" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
                     </constraints>
                     <properties/>
-                    <border type="none"/>
-                    <children>
-                      <component id="7e95a" class="javax.swing.JTextArea" binding="txaState">
-                        <constraints>
-                          <grid row="3" column="1" row-span="1" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="50"/>
-                          </grid>
-                        </constraints>
-                        <properties/>
-                      </component>
-                      <component id="6c08c" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Agente en respuesta a cliente: "/>
-                        </properties>
-                      </component>
-                      <component id="27765" class="javax.swing.JTextField" binding="textField2" default-binding="true">
-                        <constraints>
-                          <grid row="0" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
-                          </grid>
-                        </constraints>
-                        <properties/>
-                      </component>
-                      <hspacer id="9e4bd">
-                        <constraints>
-                          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                      </hspacer>
-                      <component id="9e010" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Respuesta "/>
-                        </properties>
-                      </component>
-                      <component id="9e69a" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Agente respondiendo por "/>
-                        </properties>
-                      </component>
-                      <component id="5b98a" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
-                        <constraints>
-                          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                      </component>
-                      <component id="868a" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="a Cliente. Agente a "/>
-                        </properties>
-                      </component>
-                      <component id="24541" class="javax.swing.JTextField" binding="textField3" default-binding="true">
-                        <constraints>
-                          <grid row="2" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
-                          </grid>
-                        </constraints>
-                        <properties/>
-                      </component>
-                      <component id="68905" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Descripcion: "/>
-                        </properties>
-                      </component>
-                    </children>
-                  </grid>
+                  </component>
+                  <component id="6c08c" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Agente en respuesta a cliente: "/>
+                    </properties>
+                  </component>
+                  <component id="27765" class="javax.swing.JTextField" binding="txtTitle">
+                    <constraints>
+                      <grid row="1" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <hspacer id="9e4bd">
+                    <constraints>
+                      <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <component id="9e010" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Respuesta "/>
+                    </properties>
+                  </component>
+                  <component id="9e69a" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Agente respondiendo por "/>
+                    </properties>
+                  </component>
+                  <component id="5b98a" class="javax.swing.JComboBox" binding="cmbUContact" default-binding="true">
+                    <constraints>
+                      <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="868a" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="a Cliente. Agente a "/>
+                    </properties>
+                  </component>
+                  <component id="24541" class="javax.swing.JTextField" binding="txtAgenteA">
+                    <constraints>
+                      <grid row="3" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="68905" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Descripcion: "/>
+                    </properties>
+                  </component>
                 </children>
               </grid>
-              <grid id="2cd1d" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="2cd1d" binding="panelResp2" layout-manager="GridLayoutManager" row-count="4" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <grid row="2" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -681,65 +671,55 @@
                 <children>
                   <component id="fd80d" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Actualizar Estado"/>
                     </properties>
                   </component>
-                  <grid id="2b69" layout-manager="GridLayoutManager" row-count="3" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
+                  <component id="e94c4" class="javax.swing.JTextArea" binding="txaUpdateState">
                     <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="3" column="2" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
                     </constraints>
                     <properties/>
-                    <border type="none"/>
-                    <children>
-                      <component id="e94c4" class="javax.swing.JTextArea" binding="txaDiagnostico">
-                        <constraints>
-                          <grid row="2" column="2" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="50"/>
-                          </grid>
-                        </constraints>
-                        <properties/>
-                      </component>
-                      <component id="f5956" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Actualización a Estado: "/>
-                        </properties>
-                      </component>
-                      <component id="adfe" class="javax.swing.JTextField" binding="textField4" default-binding="true">
-                        <constraints>
-                          <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
-                          </grid>
-                        </constraints>
-                        <properties/>
-                      </component>
-                      <component id="7c5f6" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Descripcion: "/>
-                        </properties>
-                      </component>
-                      <component id="51c5f" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Titulo: "/>
-                        </properties>
-                      </component>
-                    </children>
-                  </grid>
+                  </component>
+                  <component id="f5956" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Actualización a Estado: "/>
+                    </properties>
+                  </component>
+                  <component id="adfe" class="javax.swing.JTextField" binding="txtUpdateState">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="7c5f6" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Descripcion: "/>
+                    </properties>
+                  </component>
+                  <component id="51c5f" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Titulo: "/>
+                    </properties>
+                  </component>
                 </children>
               </grid>
-              <grid id="a1357" layout-manager="GridLayoutManager" row-count="5" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="a1357" binding="panelResp3" layout-manager="GridLayoutManager" row-count="4" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <grid row="4" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -757,31 +737,23 @@
                   </component>
                   <component id="f43b1" class="javax.swing.JTextArea" binding="txaCita">
                     <constraints>
-                      <grid row="4" column="1" row-span="1" col-span="4" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="3" column="1" row-span="1" col-span="4" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="55a6e" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Creacion de Cita con el Cliente #XX"/>
-                    </properties>
-                  </component>
                   <component id="79d7d" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Titulo:"/>
                     </properties>
                   </component>
-                  <component id="c344c" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+                  <component id="c344c" class="javax.swing.JTextField" binding="txtTitleCita">
                     <constraints>
-                      <grid row="2" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                      <grid row="1" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -789,15 +761,15 @@
                   </component>
                   <component id="60b05" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Agente crea y concerta cita con el cliente, el día: "/>
                     </properties>
                   </component>
-                  <component id="99529" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+                  <component id="99529" class="javax.swing.JTextField" binding="txtFechaCita">
                     <constraints>
-                      <grid row="3" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                      <grid row="2" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -805,7 +777,7 @@
                   </component>
                   <component id="258a8" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Descripcion"/>
@@ -813,7 +785,7 @@
                   </component>
                 </children>
               </grid>
-              <grid id="db1e3" layout-manager="GridLayoutManager" row-count="4" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="db1e3" binding="panelResp4" layout-manager="GridLayoutManager" row-count="3" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <grid row="6" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -829,33 +801,25 @@
                       <text value="Actualizar Caso (Diagnósticos, procedimientos, problemas encontrados, cambios, etc.)"/>
                     </properties>
                   </component>
-                  <component id="bd6ca" class="javax.swing.JTextArea" binding="txaFinished">
+                  <component id="bd6ca" class="javax.swing.JTextArea" binding="txaUpdateCase">
                     <constraints>
-                      <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="c0eac" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Actualización #XX. "/>
-                    </properties>
-                  </component>
                   <component id="590ac" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Titulo: "/>
                     </properties>
                   </component>
-                  <component id="e791f" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+                  <component id="e791f" class="javax.swing.JTextField" binding="txtTitleUpdateCase">
                     <constraints>
-                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
@@ -863,7 +827,7 @@
                   </component>
                   <component id="f9f0" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="Descripcion"/>
@@ -871,7 +835,7 @@
                   </component>
                 </children>
               </grid>
-              <grid id="4ec81" layout-manager="GridLayoutManager" row-count="4" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="4ec81" binding="panelResp5" layout-manager="GridLayoutManager" row-count="4" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <grid row="8" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -887,7 +851,7 @@
                       <text value="Conclusión o Finalización de Ticket (Resultados y Conclusiones del Caso)"/>
                     </properties>
                   </component>
-                  <component id="1db6b" class="javax.swing.JTextArea" binding="txaEliminated">
+                  <component id="1db6b" class="javax.swing.JTextArea" binding="txaFinished">
                     <constraints>
                       <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
@@ -911,7 +875,7 @@
                       <text value="Titulo: "/>
                     </properties>
                   </component>
-                  <component id="a04e2" class="javax.swing.JTextField" binding="textField8" default-binding="true">
+                  <component id="a04e2" class="javax.swing.JTextField" binding="txtTitleConclusion">
                     <constraints>
                       <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>

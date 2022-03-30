@@ -9,6 +9,7 @@ import com.sergio.TicketSystemApp.views.ticketInfo.panelEditTicket.JPanelEditTic
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class TicketInfoListener implements ActionListener {
     private static TicketInfoListener instance;
@@ -38,7 +39,15 @@ public class TicketInfoListener implements ActionListener {
                 panel.setUpCard(ticket);
                 panel.setVisible(true);
             }
+            case "Update" -> {
+                update();
+            }
         }
+    }
+
+    private void update() {
+//        List<Object> data = JPanelEditTicket.getInstance().getData();
+//        int type = (int) data.get(0);
     }
 
     private void searchTicket() {
