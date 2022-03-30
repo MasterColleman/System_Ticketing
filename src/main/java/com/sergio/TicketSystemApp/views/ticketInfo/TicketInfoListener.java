@@ -9,6 +9,8 @@ import com.sergio.TicketSystemApp.views.ticketInfo.panelEditTicket.JPanelEditTic
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class TicketInfoListener implements ActionListener {
@@ -46,8 +48,27 @@ public class TicketInfoListener implements ActionListener {
     }
 
     private void update() {
-//        List<Object> data = JPanelEditTicket.getInstance().getData();
-//        int type = (int) data.get(0);
+        int type = JPanelEditTicket.getInstance().getTypeUpdate();
+        if (type == 0) {
+            List<String> data = JPanelEditTicket.getInstance().getDataType0();
+            Controller.getInstance()
+                .addMessageInTicketHistory(data.get(0), data.get(1), data.get(2), data.get(3), data.get(4));
+        }
+        if (type == 3) {
+            List<String> data = JPanelEditTicket.getInstance().getDataType3();
+            Controller.getInstance().addUpdateInTicketHistory(data.get(0), data.get(1), data.get(2));
+        }
+        if (type == 1) {
+            List<String> data = JPanelEditTicket.getInstance().getDataType1();
+            Controller.getInstance().addStateUpdateInTicketHistory(data.get(0), data.get(1), data.get(2));
+        }
+        if (type == 2) {
+            List<String> data = JPanelEditTicket.getInstance().getDataType2();
+            Controller.getInstance().addCalendarAppointmentInTicketHistory(data.get(0), data.get(1), data.get(2),
+                                                                           LocalDateTime.parse(data.get(3),
+                                                                                               DateTimeFormatter.ofPattern(
+                                                                                                   "dd/MM/yyyy")));
+        }
     }
 
     private void searchTicket() {

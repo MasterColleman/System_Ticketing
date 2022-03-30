@@ -4,6 +4,7 @@ import com.sergio.TicketSystemApp.model.*;
 import com.sergio.TicketSystemApp.views.home.JPanelHome;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -18,10 +19,10 @@ public class Controller {
         ticketManager = TicketManager.getInstance();
         JPanelHome.getInstance();
         // add some tickets
-        List<String> listaTiempoPorEstados = new ArrayList<>(Arrays.asList("0 h","0 h","0 h","0 h","0 h"));
+        List<String> listaTiempoPorEstados = new ArrayList<>(Arrays.asList("0 h", "0 h", "0 h", "0 h", "0 h"));
         Ticket ticket1 = new Ticket("#0001", TicketServiceType.technicalService, new TicketStatus(),
-                                    "Esto es un nombre de ticket", "Elizabeth", "eli@gmail.com",
-                                    "3145422323", ContactMethod.email, new TicketPriority(), AssignedTechnician.AgentFive,
+                                    "Esto es un nombre de ticket", "Elizabeth", "eli@gmail.com", "3145422323",
+                                    ContactMethod.email, new TicketPriority(), AssignedTechnician.AgentFive,
                                     new TicketHashtags(), ContactMethod.whatsApp, LocalDate.now(), null,
                                     listaTiempoPorEstados, new TicketHistory());
         ticket1.getTicketHistory()
@@ -50,10 +51,6 @@ public class Controller {
         return newTicket;
     }
 
-    public List<Object> getResponsesFromTicket(String i) {
-        // TODO: implement
-        return null;
-    }
 
     public List<Ticket> getTicketsByState(int state) {
         System.out.println(ticketManager.getTicketsByState(state));
@@ -64,4 +61,46 @@ public class Controller {
     public Ticket getTicket(String id) {
         return ticketManager.searchTicketByNumber(id);
     }
+
+    public void updateTicketCase(String id, TicketServiceType ticketServiceType, TicketPriority ticketPriority,
+                                 AssignedTechnician assignedTechnician, TicketHashtags ticketHashtags,
+                                 ContactMethod contactMethodToUpdateClient, TicketDeadline ticketDeadline) {
+        Ticket ticket = ticketManager.searchTicketByNumber(id);
+        ticketManager.updateTicketCase(ticket, ticketServiceType, ticketPriority, assignedTechnician, ticketHashtags,
+                                       contactMethodToUpdateClient, ticketDeadline);
+    }
+
+    public void addResponseInTicketHistory(String id, String boxContent, String detailSourceRequest) {
+        Ticket ticket = ticketManager.searchTicketByNumber(id);
+        ticketManager.addRespondeInTicketHistory(ticket, boxContent, detailSourceRequest);
+    }
+
+    public void addMessageInTicketHistory(String id, String boxTitle, String boxSubtitle, String boxContent,
+                                          String detailSourceRequest) {
+        Ticket ticket = ticketManager.searchTicketByNumber(id);
+        ticketManager.addMessageInTicketHistory(ticket, boxTitle, boxSubtitle, boxContent, detailSourceRequest);
+    }
+
+    public void addUpdateInTicketHistory(String id, String boxSubtitle, String boxContent) {
+        Ticket ticket = ticketManager.searchTicketByNumber(id);
+        ticketManager.addUpdateInTicketHistory(ticket, boxSubtitle, boxContent);
+    }
+
+    public void addStateUpdateInTicketHistory(String id, String boxSubtitle, String boxContent) {
+        Ticket ticket = ticketManager.searchTicketByNumber(id);
+        ticketManager.addStateUpdateInTicketHistory(ticket, boxSubtitle, boxContent);
+    }
+
+    public void addCalendarAppointmentInTicketHistory(String id, String boxSubtitle, String boxContent,
+                                                      LocalDateTime dateTime) {
+        Ticket ticket = ticketManager.searchTicketByNumber(id);
+        ticketManager.addCalendarAppointmentInTicketHistory(ticket, boxSubtitle, boxContent, dateTime);
+    }
+
+    public void addConclusionInTicketHistory(String id, String boxSubtitle, String boxContent) {
+        Ticket ticket = ticketManager.searchTicketByNumber(id);
+        ticketManager.addConclusionInTicketHistory(ticket, boxSubtitle, boxContent);
+    }
+
+
 }

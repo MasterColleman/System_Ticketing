@@ -435,4 +435,23 @@ public class JPanelEditTicket extends JDialog {
     public List<String> getConclusion() {
         return List.of(lblIdTicket.getText(), txtTitleConclusion.getText(), txaFinished.getText());
     }
+
+    public List<String> getDataType0() {
+        List<String> data = List.of(lblIdTicket.getText(), txtTitle.getText(), txtTitle.getText(), txaState.getText(),
+                                    txtAgenteA.getText());
+        return data;
+    }
+
+    public List<String> getDataType3() {
+        List<String> data = List.of(lblIdTicket.getText(), txtTitleUpdateCase.getText(), txaUpdateCase.getText());
+        return data;
+    }
+
+    public List<String> getDataType1() {
+        return List.of(lblIdTicket.getText(), txtUpdateState.getText(), txaUpdateState.getText());
+    }
+
+    public List<String> getDataType2() {
+        return List.of(lblIdTicket.getText(), txtTitleCita.getText(), txaCita.getText(), txtFechaCita.getText());
+    }
 }

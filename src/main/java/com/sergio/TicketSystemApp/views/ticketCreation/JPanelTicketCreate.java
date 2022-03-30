@@ -96,7 +96,8 @@ public class JPanelTicketCreate extends JFrame {
     public Ticket getTicket() {
         return new Ticket("", (TicketServiceType) cmbType.getSelectedItem(), new TicketStatus(), txtTitle.getText(),
                           txtName.getText(), txtEmail.getText(), txtPhone.getText(),
-                          (ContactMethod) cmbResponseType.getSelectedItem(), new TicketPriority(), null, null,
+                          (ContactMethod) cmbResponseType.getSelectedItem(), new TicketPriority(),
+                          AssignedTechnician.AgentOne, new TicketHashtags(),
                           (ContactMethod) cmbResponseType.getSelectedItem(), null, null, null, new TicketHistory());
     }
 
@@ -127,4 +128,6 @@ public class JPanelTicketCreate extends JFrame {
     public void getInfoEdit() {
 
     }
+
+
 }
