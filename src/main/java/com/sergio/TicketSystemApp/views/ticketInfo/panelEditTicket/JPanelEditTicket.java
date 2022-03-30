@@ -8,6 +8,7 @@ import com.sergio.TicketSystemApp.views.ticketInfo.components.RectInfo;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -147,7 +148,6 @@ public class JPanelEditTicket extends JDialog {
         panelUAsig.setBackground(Color.WHITE);
         panelUTipo.setBackground(Color.WHITE);
         jpanelUContact.setBackground(Color.WHITE);
-        panelUState.setBackground(Color.WHITE);
         panelUPrority.setBackground(Color.WHITE);
         panelUHastags.setBackground(Color.WHITE);
         panelUTiempos.setBackground(Color.WHITE);
@@ -199,12 +199,6 @@ public class JPanelEditTicket extends JDialog {
         cmbAsigned.addItem(AssignedTechnician.AgentFour);
         cmbAsigned.addItem(AssignedTechnician.AgentFive);
 
-        cmbState.addItem(StateType.openByUser);
-        cmbState.addItem(StateType.awaitingAssignmentAndResponse);
-        cmbState.addItem(StateType.atReceptionDiagnosis);
-        cmbState.addItem(StateType.inProcessing);
-        cmbState.addItem(StateType.inTestingReview);
-        cmbState.addItem(StateType.concluded);
 
         cmbContact.addItem(ContactMethod.ticketSystem);
         cmbContact.addItem(ContactMethod.whatsApp);
@@ -296,10 +290,9 @@ public class JPanelEditTicket extends JDialog {
         setResponses(ticket);
         enableState(ticket.getTicketStatus().getActualState());
         setTexts(ticket);
-        lblTotalTime.setText(
-            "Tiempo Total: " + ticket.getTimeByState().stream().map(o -> o.replace("\\s+", "").replace("h", "")
-                .replace(" ", ""))
-                .reduce((a, b) -> String.valueOf(Integer.parseInt(a) + Integer.parseInt(b))).get());
+        lblTotalTime.setText("Tiempo Total: " + ticket.getTimeByState().stream()
+            .map(o -> o.replace("\\s+", "").replace("h", "").replace(" ", ""))
+            .reduce((a, b) -> String.valueOf(Integer.parseInt(a) + Integer.parseInt(b))).get());
 
         btnUpdate.addActionListener(TicketInfoListener.getInstance());
         btnUpdate.setActionCommand("Update");
@@ -313,7 +306,11 @@ public class JPanelEditTicket extends JDialog {
         lblPriority.setText(ticket.getTicketPriority().getPriority().getPriorityType());
         lblType.setText(ticket.getTicketServiceType().getTicketServiceType());
         lblAsigned.setText(ticket.getAssignedTechnician().getAssignedTechnician());
-        lblCreationDate.setText(ticket.getTicketCreationDate().toString());
+        lblPlazo.setText("Plazo de entrega : " + ticket.getTicketDeadline()
+            .getDeadlineTimeAtAnyTime(ticket.getTicketCreationDate(), ticket.getTicketPriority(),
+                                      ticket.getTicketStatus().getActualState()));
+        lblCreationDate.setText("Fecha de Creación: " + ticket.getTicketCreationDate()
+            .format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
         lblHastTags.setText(ticket.getTicketHashtags().getHashtags());
     }
 
@@ -429,7 +426,8 @@ public class JPanelEditTicket extends JDialog {
     }
 
     public List<String> getCita() {
-        return List.of(lblIdTicket.getText().substring(8), txtTitleCita.getText(), txaCita.getText(), txtFechaCita.getText());
+        return List.of(
+            lblIdTicket.getText().substring(8), txtTitleCita.getText(), txaCita.getText(), txtFechaCita.getText());
     }
 
     public List<String> getUpdateCase() {
@@ -441,13 +439,14 @@ public class JPanelEditTicket extends JDialog {
     }
 
     public List<String> getDataType0() {
-        List<String> data = List.of(lblIdTicket.getText().substring(8), txtTitle.getText(), txtTitle.getText(), txaState.getText(),
-                                    txtAgenteA.getText());
+        List<String> data = List.of(lblIdTicket.getText().substring(8), txtTitle.getText(), txtTitle.getText(),
+                                    txaState.getText(), txtAgenteA.getText());
         return data;
     }
 
     public List<String> getDataType3() {
-        List<String> data = List.of(lblIdTicket.getText().substring(8), txtTitleUpdateCase.getText(), txaUpdateCase.getText());
+        List<String> data = List.of(
+            lblIdTicket.getText().substring(8), txtTitleUpdateCase.getText(), txaUpdateCase.getText());
         return data;
     }
 
@@ -457,7 +456,8 @@ public class JPanelEditTicket extends JDialog {
     }
 
     public List<String> getDataType2() {
-        return List.of(lblIdTicket.getText().substring(8), txtTitleCita.getText(), txaCita.getText(), txtFechaCita.getText());
+        return List.of(
+            lblIdTicket.getText().substring(8), txtTitleCita.getText(), txaCita.getText(), txtFechaCita.getText());
     }
 
     public StateType getState() {
