@@ -58,6 +58,7 @@ public class TicketManager {
         ticket.setTicketNumber(++count);
         ticket.setTicketCreationDate();
         ticket.setTicketStatus();
+        ticket.setTicketDeadline(ticket.getTicketPriority());
         ticket.setTimeByState(Arrays.asList("0 h", "0 h", "0 h","0 h","0 h"));
         ticketsList.add(ticket);
         return ticket;
@@ -148,12 +149,13 @@ public class TicketManager {
         ticket.getTicketHashtags().addWordsToHashtags(hastags);
     }
 
-    public void updateTicketDeadline(Ticket ticket, TicketDeadline deadline){///MODIFICAR CLASE
-        ticket.setTicketDeadline(deadline);
+    public void updateTicketDeadline(Ticket ticket, StateType stateType){
+        ticket.getTicketDeadline().getDeadlineTimeAtAnyTime(ticket.getTicketCreationDate(), ticket.getTicketPriority(), stateType);
     }
 
-    public void updateTimeByState(){
-
+    public void updateTimeByState(Ticket ticket,StateType stateType){
+        ticket.setTimeByState(ticket.getTicketStatus(), ticket.getTicketDeadline(),
+                ticket.getTicketCreationDate(), ticket.getTicketPriority(), stateType);
     }
 
 
@@ -165,7 +167,7 @@ public class TicketManager {
         ticket.setTicketServiceType(ticketServiceType);
         ticket.setTicketPriority(ticketPriority);
         ticket.setTicketHashtags(ticketHashtags);
-        ticket.setTicketDeadline(ticketDeadline);//getticketpriority para actualizar deadline
+        ticket.setTicketDeadline(ticket.getTicketPriority());//getticketpriority para actualizar deadline
         ticket.setAssignedTechnician(assignedTechnician);
         ticket.setContactMethodToUpdateClient(contactMethodToUpdateClient);
     }

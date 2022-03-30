@@ -1,7 +1,9 @@
 package tests;
 
+import com.sergio.TicketSystemApp.controllers.Controller;
 import com.sergio.TicketSystemApp.model.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class Tester {
 
     public int getDeadlineTimeAtAnyTime(LocalDateTime ticketCreationDate, TicketPriority ticketPriority, StateType stateTypeIn) {
         int time = 0; int count = 0;
+
         if(((validateDeadLineTime(this.deadLineTime)!=-1) )){
             LocalDateTime dateTimeNow = LocalDateTime.now();//Fecha-Tiempo en este instante
             LocalTime timeNow = LocalTime.ofSecondOfDay(dateTimeNow.getHour());//Hora de la Fecha-Tiempo instantanea
@@ -67,5 +70,12 @@ public class Tester {
             case inTestingReview-> timeByState.set(4,timeStop + " h");
         }
         totalTime += timeStop;
+    }
+
+    public static void main(String[] args){
+        LocalDateTime creationDate = LocalDateTime.of(2022, 03, 28, 16, 10);
+        StateType stateType = null;
+        StateType openByUser = stateType.openByUser;
+
     }
 }

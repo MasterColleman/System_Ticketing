@@ -18,7 +18,7 @@ public class Ticket {
     private AssignedTechnician assignedTechnician;//Enumerado de Agente o Tecnico, asignado al caso o ticket
     private TicketHashtags ticketHashtags;//Clase
     private ContactMethod contactMethodToUpdateClient;//Enumerado
-    private LocalDate ticketCreationDate;
+    private LocalDateTime ticketCreationDate;
     private TicketDeadline ticketDeadline;//Clase Plazo de Entrega
     private List<String> timeByState;
     private TicketHistory ticketHistory;//Clase que contiene todas las cajas con los cambios del ticket incluida la descripcion
@@ -28,7 +28,7 @@ public class Ticket {
                   String ticketName, String clientName, String clientEmail, String clientCellPhoneNumber,
                   ContactMethod sourceRequest, TicketPriority ticketPriority, AssignedTechnician assignedTechnician,
                   TicketHashtags ticketHashtags, ContactMethod contactMethodToUpdateClient,
-                  LocalDate ticketCreationDate, TicketDeadline ticketDeadline, List<String> timeByState,
+                  LocalDateTime ticketCreationDate, TicketDeadline ticketDeadline, List<String> timeByState,
                   TicketHistory ticketHistory) {
         this.ticketNumber = ticketNumber;
         this.ticketServiceType = ticketServiceType;
@@ -130,11 +130,11 @@ public class Ticket {
     }
 
     public void setTicketCreationDate() {
-        this.ticketCreationDate = LocalDate.now();
+        this.ticketCreationDate = LocalDateTime.now();
     }
 
-    public void setTicketDeadline(TicketDeadline ticketDeadline) {
-        this.ticketDeadline = ticketDeadline;
+    public void setTicketDeadline(TicketPriority ticketPriority) {
+        this.ticketDeadline.setDeadLineTime(ticketPriority);
     }
 
     public void setTicketHistory(TicketHistory ticketHistory) {
@@ -189,7 +189,7 @@ public class Ticket {
         return contactMethodToUpdateClient;
     }
 
-    public LocalDate getTicketCreationDate() {
+    public LocalDateTime getTicketCreationDate() {
         return ticketCreationDate;
     }
 

@@ -21,9 +21,9 @@ public class Controller {
         // add some tickets
         List<String> listaTiempoPorEstados = new ArrayList<>(Arrays.asList("0 h", "0 h", "0 h", "0 h", "0 h"));
         Ticket ticket1 = new Ticket("#0001", TicketServiceType.technicalService, new TicketStatus(),
-                                    "Esto es un nombre de ticket", "Elizabeth", "eli@gmail.com", "3145422323",
-                                    ContactMethod.email, new TicketPriority(), AssignedTechnician.AgentFive,
-                                    new TicketHashtags(), ContactMethod.whatsApp, LocalDate.now(), null,
+                                    "Esto es un nombre de ticket", "Elizabeth", "eli@gmail.com",
+                                    "3145422323", ContactMethod.email, new TicketPriority(), AssignedTechnician.AgentFive,
+                                    new TicketHashtags(), ContactMethod.whatsApp, LocalDateTime.now(), new TicketDeadline(),
                                     listaTiempoPorEstados, new TicketHistory());
         ticket1.getTicketHistory()
             .addDescription(ticket1.getTicketName(), "Esto es una descripcion del ticket", ticket1.getClientName(),

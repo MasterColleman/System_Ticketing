@@ -6,7 +6,6 @@ import java.time.LocalTime;
 public class TicketDeadline {
 
     private int deadLineTime;
-    private int deadLineTimeDays;
     //Horario Laborable
     private static final LocalTime startTimeOfDay =  LocalTime.of(8, 00);
     private static final LocalTime endTimeOfDay =  LocalTime.of(20, 00);
