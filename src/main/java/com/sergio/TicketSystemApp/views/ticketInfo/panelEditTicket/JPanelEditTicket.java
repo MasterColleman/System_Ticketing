@@ -1,6 +1,7 @@
 package com.sergio.TicketSystemApp.views.ticketInfo.panelEditTicket;
 
 import com.sergio.TicketSystemApp.model.*;
+import com.sergio.TicketSystemApp.views.ticketInfo.JPanelTicketInfo;
 import com.sergio.TicketSystemApp.views.ticketInfo.TicketInfoListener;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardResponse;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardTicket;
@@ -461,7 +462,7 @@ public class JPanelEditTicket extends JDialog {
     }
 
     public StateType getState() {
-        return (StateType) cmbState.getSelectedItem();
+        return JPanelTicketInfo.getInstance().getTicket().getTicketStatus().getActualState();
     }
 
     public List<String> getDataType4() {
@@ -480,4 +481,20 @@ public class JPanelEditTicket extends JDialog {
         return (PriorityType) cmbPrioriry.getSelectedItem();
     }
 
+    public void clearAndClose() {
+        // clear all fields
+        txtTitle.setText("");
+        txtTitleUpdateCase.setText("");
+        txtFechaCita.setText("");
+        txtTitleCita.setText("");
+        txaCita.setText("");
+        txaUpdateCase.setText("");
+        txaUpdateState.setText("");
+        txtUpdateState.setText("");
+        txaFinished.setText("");
+        txtTitleConclusion.setText("");
+        txtAgenteA.setText("");
+        // close window
+        this.dispose();
+    }
 }

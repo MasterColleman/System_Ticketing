@@ -5,6 +5,7 @@ import com.sergio.TicketSystemApp.model.Ticket;
 import com.sergio.TicketSystemApp.views.ticketCreation.JPanelTicketCreate;
 import com.sergio.TicketSystemApp.views.ticketInfo.dialogSearchTicket.JDialogSearchTicket;
 import com.sergio.TicketSystemApp.views.ticketInfo.panelEditTicket.JPanelEditTicket;
+import com.sergio.TicketSystemApp.views.ticketSystem.JPanelTicketSystem;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -86,6 +87,9 @@ public class TicketInfoListener implements ActionListener {
         Controller.getInstance().updatePriority(JPanelTicketInfo.getInstance().getTicket(),
                                                 JPanelEditTicket.getInstance().getPriority());
 
+        JPanelEditTicket.getInstance().clearAndClose();
+        JPanelTicketInfo.getInstance().updateTickets();
+        JPanelTicketSystem.getInstance().updateTickets();
     }
 
     private void searchTicket() {

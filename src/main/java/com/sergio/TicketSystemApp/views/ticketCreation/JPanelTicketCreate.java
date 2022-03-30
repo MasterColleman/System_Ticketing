@@ -94,11 +94,14 @@ public class JPanelTicketCreate extends JFrame {
 
 
     public Ticket getTicket() {
+        TicketDeadline deadline = new TicketDeadline();
+        deadline.setDeadLineTime(new TicketPriority());
         return new Ticket("", (TicketServiceType) cmbType.getSelectedItem(), new TicketStatus(), txtTitle.getText(),
                           txtName.getText(), txtEmail.getText(), txtPhone.getText(),
                           (ContactMethod) cmbResponseType.getSelectedItem(), new TicketPriority(),
                           AssignedTechnician.AgentOne, new TicketHashtags(),
-                          (ContactMethod) cmbResponseType.getSelectedItem(), null, new TicketDeadline(), null, new TicketHistory());
+                          (ContactMethod) cmbResponseType.getSelectedItem(), null, deadline , null,
+                          new TicketHistory());
     }
 
     public void showErrorMessage(String error, String message) {

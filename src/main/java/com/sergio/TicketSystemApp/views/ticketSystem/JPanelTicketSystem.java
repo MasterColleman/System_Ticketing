@@ -152,4 +152,8 @@ public class JPanelTicketSystem extends JFrame {
         }
         return null;
     }
+
+    public void updateTickets() {
+        initComponents();
+    }
 }

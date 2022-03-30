@@ -1,5 +1,6 @@
 package com.sergio.TicketSystemApp.views.ticketInfo;
 
+import com.sergio.TicketSystemApp.controllers.Controller;
 import com.sergio.TicketSystemApp.model.*;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardResponse;
 import com.sergio.TicketSystemApp.views.ticketInfo.components.JCardTicket;
@@ -162,5 +163,9 @@ public class JPanelTicketInfo extends JFrame {
 
     public void enableButton() {
         editarButton.setEnabled(true);
+    }
+
+    public void updateTickets() {
+        setUpCard(Controller.getInstance().getTicket(ticket.getTicketNumber()));
     }
 }
